@@ -24,6 +24,7 @@ function App() {
             <Route path="/meta-ai" element={<MetaAI />} />
             <Route path="/contact/:id" element={<ContactInfo />} />
             <Route path="/settings" element={<Settings />} />
+            <Route path="/register" element={<Register />} />
             <Route path="/status/:id" element={<StatusDetail />} />
             <Route path="/status/:id/react" element={<StatusReaction />} />
             <Route path="*" element={<NotFound />} />
