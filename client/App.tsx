@@ -8,6 +8,7 @@ import ContactInfo from "./pages/ContactInfo";
 import Settings from "./pages/Settings";
 import StatusDetail from "./pages/StatusDetail";
 import StatusReaction from "./pages/StatusReaction";
+import Register from "./pages/Register";
 import NotFound from "./pages/NotFound";
 
 function App() {
