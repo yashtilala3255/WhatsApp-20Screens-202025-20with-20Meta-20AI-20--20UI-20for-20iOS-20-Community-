@@ -12,10 +12,14 @@
   },
   "scripts": {
     "dev": "vite",
+    "dev:server": "tsx server/start.ts",
+    "dev:full": "concurrently \"npm run dev\" \"npm run dev:server\"",
     "build": "npm run build:client && npm run build:server",
     "build:client": "vite build",
     "build:server": "vite build --config vite.config.server.ts",
     "start": "node dist/server/node-build.mjs",
+    "db:seed": "tsx server/database/seed.ts",
+    "db:reset": "rm -f server/database/whatsapp.db && npm run dev:server",
     "test": "vitest --run",
     "format.fix": "prettier --write .",
     "typecheck": "tsc"
