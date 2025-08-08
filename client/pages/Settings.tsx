@@ -211,6 +211,27 @@ export default function Settings() {
               <div className="w-5 h-4 fill-[#0A0A0A]" />
             }
             label="Storage and data"
+            onClick={() => navigate('/storage-settings')}
+          />
+          <SettingsRow
+            icon={
+              <svg className="w-5 h-5 fill-[#FFD700]" viewBox="0 0 24 24">
+                <polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26 12,2"/>
+              </svg>
+            }
+            label="Starred Messages"
+            onClick={() => navigate('/starred-messages')}
+          />
+          <SettingsRow
+            icon={
+              <svg className="w-5 h-5 fill-[#667781]" viewBox="0 0 24 24">
+                <path d="M21 8V21H3V8"/>
+                <path d="M1 3H23L21 8H3L1 3Z"/>
+                <path d="M10 12H14"/>
+              </svg>
+            }
+            label="Archived Chats"
+            onClick={() => navigate('/archive')}
             separator={false}
           />
         </div>
