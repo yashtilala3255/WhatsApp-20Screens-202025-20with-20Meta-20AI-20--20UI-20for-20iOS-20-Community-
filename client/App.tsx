@@ -44,6 +44,7 @@ function App() {
             <Route path="/new-group" element={<NewGroup />} />
             <Route path="/group-info/:id" element={<GroupInfo />} />
             <Route path="/archive" element={<Archive />} />
+            <Route path="/starred-messages" element={<StarredMessages />} />
             <Route path="/status/:id" element={<StatusDetail />} />
             <Route path="/status/:id/react" element={<StatusReaction />} />
             <Route path="*" element={<NotFound />} />
