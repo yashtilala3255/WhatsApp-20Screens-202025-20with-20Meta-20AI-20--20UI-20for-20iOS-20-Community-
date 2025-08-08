@@ -19,6 +19,12 @@ import NewGroup from "./pages/NewGroup";
 import GroupInfo from "./pages/GroupInfo";
 import Archive from "./pages/Archive";
 import StarredMessages from "./pages/StarredMessages";
+import MediaGallery from "./pages/MediaGallery";
+import Camera from "./pages/Camera";
+import StatusCamera from "./pages/StatusCamera";
+import ForwardMessage from "./pages/ForwardMessage";
+import PrivacySettings from "./pages/PrivacySettings";
+import NotificationSettings from "./pages/NotificationSettings";
 import NotFound from "./pages/NotFound";
 
 function App() {
