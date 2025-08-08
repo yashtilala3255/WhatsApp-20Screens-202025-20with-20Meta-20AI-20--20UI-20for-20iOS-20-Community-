@@ -6,11 +6,11 @@ export function TabBar() {
   
   // Determine active tab based on current path
   const getActiveTab = () => {
-    if (currentPath === '/') return 'updates';
+    if (currentPath === '/' || currentPath === '/updates') return 'updates';
     if (currentPath === '/calls') return 'calls';
     if (currentPath === '/communities') return 'communities';
     if (currentPath === '/settings') return 'settings';
-    if (currentPath.startsWith('/chat')) return 'chats';
+    if (currentPath === '/chats' || currentPath.startsWith('/chat') || currentPath.startsWith('/new-chat') || currentPath.startsWith('/group') || currentPath.startsWith('/contacts') || currentPath.startsWith('/search') || currentPath.startsWith('/archive')) return 'chats';
     return 'updates';
   };
 
