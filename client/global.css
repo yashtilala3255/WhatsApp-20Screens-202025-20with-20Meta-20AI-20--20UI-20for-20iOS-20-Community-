@@ -211,4 +211,37 @@
     -ms-user-select: none;
     user-select: none;
   }
+
+  /* Responsive text sizes */
+  .text-responsive {
+    @apply text-sm;
+  }
+
+  @screen lg {
+    .text-responsive {
+      @apply text-base;
+    }
+  }
+
+  /* Mobile-optimized scrolling */
+  .mobile-scroll {
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior: contain;
+  }
+
+  /* Desktop hover effects */
+  @screen lg {
+    .desktop-hover:hover {
+      @apply scale-105 shadow-lg;
+      transition: all 0.2s ease-in-out;
+    }
+  }
+
+  /* High DPI screen optimizations */
+  @media (-webkit-min-device-pixel-ratio: 2) {
+    .mobile-container {
+      -webkit-backface-visibility: hidden;
+      backface-visibility: hidden;
+    }
+  }
 }
