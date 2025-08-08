@@ -95,7 +95,15 @@
 
   body {
     @apply bg-background text-foreground font-sans;
-    font-family: 'SF Pro Text', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    font-family:
+      "SF Pro Text",
+      -apple-system,
+      BlinkMacSystemFont,
+      "Segoe UI",
+      Roboto,
+      Helvetica,
+      Arial,
+      sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
@@ -114,11 +122,12 @@
 
   /* WhatsApp-style green color */
   .whatsapp-green {
-    background-color: #1DAB61;
+    background-color: #1dab61;
   }
 
   /* Smooth transitions for better UX */
-  button, a {
+  button,
+  a {
     @apply transition-all duration-200 ease-in-out;
   }
 
