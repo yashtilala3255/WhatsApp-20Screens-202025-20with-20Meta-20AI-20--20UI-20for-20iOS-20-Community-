@@ -1,4 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Toaster } from "./components/ui/toaster";
 import Updates from "./pages/Updates";
 import Calls from "./pages/Calls";
 import Communities from "./pages/Communities";
