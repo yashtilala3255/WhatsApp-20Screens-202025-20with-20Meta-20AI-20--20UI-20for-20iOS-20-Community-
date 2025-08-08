@@ -3,6 +3,7 @@ import Updates from "./pages/Updates";
 import Calls from "./pages/Calls";
 import Communities from "./pages/Communities";
 import Chat from "./pages/Chat";
+import MetaAI from "./pages/MetaAI";
 import StatusDetail from "./pages/StatusDetail";
 import StatusReaction from "./pages/StatusReaction";
 import NotFound from "./pages/NotFound";
