@@ -162,8 +162,26 @@
 /* Responsive utilities for mobile-first design */
 @layer utilities {
   .mobile-container {
-    @apply w-full max-w-sm mx-auto bg-white relative overflow-hidden;
-    max-width: 393px;
+    @apply w-full bg-white relative overflow-hidden;
+    /* Mobile: Full screen */
+    min-height: 100vh;
+    min-height: 100dvh; /* Dynamic viewport height for mobile browsers */
+  }
+
+  /* Desktop: Contained mobile-like experience */
+  @screen lg {
+    .mobile-container {
+      @apply mx-auto shadow-2xl rounded-3xl;
+      max-width: 393px;
+      height: 844px; /* iPhone 14 Pro height */
+      min-height: 844px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(10px);
+    }
+  }
+
+  .desktop-container {
+    /* Additional desktop-specific styling can go here */
   }
 
   .mobile-safe-area {
