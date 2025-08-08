@@ -113,10 +113,12 @@
     @apply bg-gray-100 min-h-screen;
   }
 
-  /* Ensure mobile viewport is properly sized */
+  /* Desktop: Center and add proper background */
   @screen lg {
     .App {
       @apply flex items-center justify-center;
+      background: linear-gradient(135deg, #1DAB61 0%, #128C7E 100%);
+      padding: 2rem;
     }
   }
 
