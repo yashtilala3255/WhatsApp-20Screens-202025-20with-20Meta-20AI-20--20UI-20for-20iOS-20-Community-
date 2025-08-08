@@ -32,17 +32,20 @@ A pixel-perfect mobile-first WhatsApp clone built with React, TypeScript, and Ta
 ### Installation
 
 1. Clone the repository:
+
 ```bash
 git clone [repository-url]
 cd whatsapp-mobile-clone
 ```
 
 2. Install dependencies:
+
 ```bash
 npm install
 ```
 
 3. Start the development server:
+
 ```bash
 npm run dev
 ```
@@ -90,16 +93,19 @@ npm run dev
 ## 📄 Pages
 
 ### Updates Page (`/`)
+
 - My status section with profile picture
 - Recent updates from contacts
 - Channels section with explore option
 
 ### Calls Page (`/calls`)
+
 - Favorites section for frequent contacts
 - Recent calls with call type indicators
 - End-to-end encryption notice
 
 ### Communities Page (`/communities`)
+
 - Community discovery illustration
 - Descriptive content about communities
 - "See example communities" link
