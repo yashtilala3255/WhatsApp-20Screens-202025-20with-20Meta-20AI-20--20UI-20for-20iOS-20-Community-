@@ -4,6 +4,7 @@ import Calls from "./pages/Calls";
 import Communities from "./pages/Communities";
 import Chat from "./pages/Chat";
 import MetaAI from "./pages/MetaAI";
+import ContactInfo from "./pages/ContactInfo";
 import StatusDetail from "./pages/StatusDetail";
 import StatusReaction from "./pages/StatusReaction";
 import NotFound from "./pages/NotFound";
