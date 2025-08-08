@@ -35,6 +35,14 @@ function App() {
             <Route path="/settings" element={<Settings />} />
             <Route path="/register" element={<Register />} />
             <Route path="/login" element={<Login />} />
+            <Route path="/chats" element={<Chats />} />
+            <Route path="/new-chat" element={<NewChat />} />
+            <Route path="/profile" element={<Profile />} />
+            <Route path="/contacts" element={<Contacts />} />
+            <Route path="/search" element={<Search />} />
+            <Route path="/new-group" element={<NewGroup />} />
+            <Route path="/group-info/:id" element={<GroupInfo />} />
+            <Route path="/archive" element={<Archive />} />
             <Route path="/status/:id" element={<StatusDetail />} />
             <Route path="/status/:id/react" element={<StatusReaction />} />
             <Route path="*" element={<NotFound />} />
