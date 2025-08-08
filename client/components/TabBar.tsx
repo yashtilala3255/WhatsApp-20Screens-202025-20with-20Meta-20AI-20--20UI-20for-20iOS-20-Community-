@@ -39,14 +39,14 @@ export default function TabBar({ activeTab }: TabBarProps) {
         </Link>
 
         {/* Communities Tab */}
-        <div className="flex flex-col items-center w-8">
+        <Link to="/communities" className="flex flex-col items-center w-8">
           <div className="w-8 h-8 flex items-center justify-center">
-            <div className="w-[31px] h-[21px] bg-[#767779]"></div>
+            <div className={`w-[31px] h-[21px] ${activeTab === 'communities' ? 'bg-black' : 'bg-[#767779]'}`}></div>
           </div>
-          <div className="text-[10px] font-medium tracking-[0.05px] text-[#767779]">
+          <div className={`text-[10px] font-medium tracking-[0.05px] ${activeTab === 'communities' ? 'text-black' : 'text-[#767779]'}`}>
             Communities
           </div>
-        </div>
+        </Link>
 
         {/* Chats Tab with Badge */}
         <div className="flex flex-col items-center w-8 relative">
