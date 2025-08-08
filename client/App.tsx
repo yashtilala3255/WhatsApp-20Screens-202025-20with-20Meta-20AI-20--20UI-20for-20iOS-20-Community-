@@ -18,6 +18,7 @@ import Search from "./pages/Search";
 import NewGroup from "./pages/NewGroup";
 import GroupInfo from "./pages/GroupInfo";
 import Archive from "./pages/Archive";
+import StarredMessages from "./pages/StarredMessages";
 import NotFound from "./pages/NotFound";
 
 function App() {
