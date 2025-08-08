@@ -40,19 +40,12 @@
     --radius: 0.5rem;
 
     --sidebar-background: 0 0% 98%;
-
     --sidebar-foreground: 240 5.3% 26.1%;
-
     --sidebar-primary: 240 5.9% 10%;
-
     --sidebar-primary-foreground: 0 0% 98%;
-
     --sidebar-accent: 240 4.8% 95.9%;
-
     --sidebar-accent-foreground: 240 5.9% 10%;
-
     --sidebar-border: 220 13% 91%;
-
     --sidebar-ring: 217.2 91.2% 59.8%;
   }
 
@@ -101,6 +94,92 @@
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-sans;
+    font-family: 'SF Pro Text', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Mobile-first responsive design */
+  .App {
+    @apply bg-gray-100 min-h-screen;
+  }
+
+  /* Ensure mobile viewport is properly sized */
+  @screen lg {
+    .App {
+      @apply flex items-center justify-center;
+    }
+  }
+
+  /* WhatsApp-style green color */
+  .whatsapp-green {
+    background-color: #1DAB61;
+  }
+
+  /* Smooth transitions for better UX */
+  button, a {
+    @apply transition-all duration-200 ease-in-out;
+  }
+
+  /* Custom scrollbar for webkit browsers */
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 2px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: rgba(0, 0, 0, 0.3);
+  }
+
+  /* Ensure proper text rendering on different devices */
+  .text-rendering-optimized {
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+/* Responsive utilities for mobile-first design */
+@layer utilities {
+  .mobile-container {
+    @apply w-full max-w-sm mx-auto bg-white relative overflow-hidden;
+    max-width: 393px;
+  }
+
+  .mobile-safe-area {
+    @apply pb-safe-bottom;
+  }
+
+  /* Status bar styling for different devices */
+  .status-bar-light {
+    @apply text-black;
+  }
+
+  .status-bar-dark {
+    @apply text-white;
+  }
+
+  /* Tap targets for mobile accessibility */
+  .touch-target {
+    @apply min-h-[44px] min-w-[44px];
+  }
+
+  /* Prevent text selection on interactive elements */
+  .no-select {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
   }
 }
