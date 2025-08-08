@@ -70,6 +70,7 @@ function App() {
           </Routes>
         </div>
       </div>
+      <Toaster />
     </BrowserRouter>
   );
 }
