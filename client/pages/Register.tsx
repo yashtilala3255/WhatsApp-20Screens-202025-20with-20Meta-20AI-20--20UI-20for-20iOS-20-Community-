@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
-import { useForm } from 'react-hook-form';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { z } from 'zod';
-import { Link, useNavigate } from 'react-router-dom';
-import StatusBar from '../components/StatusBar';
-import { Button } from '../components/ui/button';
-import { Input } from '../components/ui/input';
+import React, { useState } from "react";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { z } from "zod";
+import { Link, useNavigate } from "react-router-dom";
+import StatusBar from "../components/StatusBar";
+import { Button } from "../components/ui/button";
+import { Input } from "../components/ui/input";
 import {
   Form,
   FormControl,
@@ -13,17 +13,24 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from '../components/ui/form';
-import { useToast } from '../hooks/use-toast';
+} from "../components/ui/form";
+import { useToast } from "../hooks/use-toast";
 
 const registerSchema = z.object({
-  firstName: z.string().min(1, 'First name is required').max(50, 'First name too long'),
-  lastName: z.string().min(1, 'Last name is required').max(50, 'Last name too long'),
-  phoneNumber: z.string()
-    .min(10, 'Phone number must be at least 10 digits')
-    .max(15, 'Phone number too long')
-    .regex(/^\+?[\d\s\-\(\)]+$/, 'Invalid phone number format'),
-  email: z.string().email('Invalid email address').optional().or(z.literal('')),
+  firstName: z
+    .string()
+    .min(1, "First name is required")
+    .max(50, "First name too long"),
+  lastName: z
+    .string()
+    .min(1, "Last name is required")
+    .max(50, "Last name too long"),
+  phoneNumber: z
+    .string()
+    .min(10, "Phone number must be at least 10 digits")
+    .max(15, "Phone number too long")
+    .regex(/^\+?[\d\s\-\(\)]+$/, "Invalid phone number format"),
+  email: z.string().email("Invalid email address").optional().or(z.literal("")),
 });
 
 type RegisterFormData = z.infer<typeof registerSchema>;
@@ -36,10 +43,10 @@ export default function Register() {
   const form = useForm<RegisterFormData>({
     resolver: zodResolver(registerSchema),
     defaultValues: {
-      firstName: '',
-      lastName: '',
-      phoneNumber: '',
-      email: '',
+      firstName: "",
+      lastName: "",
+      phoneNumber: "",
+      email: "",
     },
   });
 
@@ -47,18 +54,18 @@ export default function Register() {
     setIsLoading(true);
     try {
       // TODO: Implement actual registration API call
-      console.log('Registration data:', data);
-      
+      console.log("Registration data:", data);
+
       // Simulate API call
-      await new Promise(resolve => setTimeout(resolve, 1500));
-      
+      await new Promise((resolve) => setTimeout(resolve, 1500));
+
       toast({
         title: "Registration Successful!",
         description: "Welcome to WhatsApp! You can now start chatting.",
       });
-      
+
       // Navigate to main app after successful registration
-      navigate('/');
+      navigate("/");
     } catch (error) {
       toast({
         title: "Registration Failed",
@@ -73,12 +80,12 @@ export default function Register() {
   return (
     <div className="min-h-screen bg-[#F4F4F4]">
       <StatusBar />
-      
+
       <div className="bg-white">
         {/* Header */}
         <div className="flex items-center justify-between px-4 py-4 border-b border-gray-200">
-          <Link 
-            to="/" 
+          <Link
+            to="/"
             className="flex items-center justify-center w-8 h-8 rounded-full hover:bg-gray-100"
           >
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -109,7 +116,9 @@ export default function Register() {
               />
             </svg>
           </div>
-          <h2 className="text-[24px] font-bold text-black mb-2">Welcome to WhatsApp</h2>
+          <h2 className="text-[24px] font-bold text-black mb-2">
+            Welcome to WhatsApp
+          </h2>
           <p className="text-[16px] text-[#666666] leading-relaxed">
             Join millions of users connecting with friends and family worldwide.
           </p>
@@ -211,11 +220,11 @@ export default function Register() {
 
               {/* Terms and Privacy */}
               <div className="text-center text-[14px] text-[#666666] leading-relaxed px-4">
-                By registering, you agree to WhatsApp's{' '}
+                By registering, you agree to WhatsApp's{" "}
                 <Link to="/terms" className="text-[#1DAB61] underline">
                   Terms of Service
-                </Link>{' '}
-                and{' '}
+                </Link>{" "}
+                and{" "}
                 <Link to="/privacy" className="text-[#1DAB61] underline">
                   Privacy Policy
                 </Link>
@@ -233,7 +242,7 @@ export default function Register() {
                     Creating Account...
                   </div>
                 ) : (
-                  'Create Account'
+                  "Create Account"
                 )}
               </Button>
             </form>
@@ -242,10 +251,10 @@ export default function Register() {
           {/* Already have account */}
           <div className="text-center mt-6">
             <span className="text-[14px] text-[#666666]">
-              Already have an account?{' '}
+              Already have an account?{" "}
             </span>
-            <Link 
-              to="/login" 
+            <Link
+              to="/login"
               className="text-[14px] text-[#1DAB61] font-medium underline"
             >
               Sign In

@@ -7,6 +7,7 @@ A comprehensive, feature-complete WhatsApp clone built with React 18, TypeScript
 ## ✨ Features Overview
 
 ### 🚀 **Complete WhatsApp Experience**
+
 - **23 fully functional pages** covering all core WhatsApp features
 - **100% mobile-first design** with responsive layouts
 - **Pixel-perfect UI** matching iOS WhatsApp interface
@@ -14,6 +15,7 @@ A comprehensive, feature-complete WhatsApp clone built with React 18, TypeScript
 - **Authentic interactions** with touch-friendly components
 
 ### 📋 **Core Messaging Features**
+
 - ✅ **Chat Management** - Full conversation list and individual chats
 - ✅ **Contact System** - Browse, add, and manage contacts
 - ✅ **Group Chats** - Create and manage group conversations
@@ -22,6 +24,7 @@ A comprehensive, feature-complete WhatsApp clone built with React 18, TypeScript
 - ✅ **Message Actions** - Forward, star, and archive messages
 
 ### 🔐 **Privacy & Settings**
+
 - ✅ **User Authentication** - Login and registration system
 - ✅ **Privacy Controls** - Comprehensive privacy settings
 - ✅ **Notifications** - Customizable notification preferences
@@ -29,6 +32,7 @@ A comprehensive, feature-complete WhatsApp clone built with React 18, TypeScript
 - ✅ **Account Security** - Privacy and security options
 
 ### 📸 **Rich Media Features**
+
 - ✅ **Camera Integration** - Photo and video capture
 - ✅ **Status/Stories** - Create text, photo, and video status
 - ✅ **Media Gallery** - Organized media browsing
@@ -37,6 +41,7 @@ A comprehensive, feature-complete WhatsApp clone built with React 18, TypeScript
 ## 🛠️ Tech Stack
 
 ### **Frontend**
+
 - **React 18.3.1** - Modern React with hooks and concurrent features
 - **TypeScript 5.5.3** - Full type safety and developer experience
 - **Tailwind CSS 3.4.11** - Utility-first CSS framework
@@ -45,18 +50,21 @@ A comprehensive, feature-complete WhatsApp clone built with React 18, TypeScript
 - **Zod 3.23.8** - Runtime type validation
 
 ### **UI Components**
+
 - **Radix UI** - Headless accessible components
 - **Lucide React** - Beautiful icon system
 - **Framer Motion** - Smooth animations and transitions
 - **Sonner** - Toast notifications
 
 ### **Build & Development**
+
 - **Vite 6.2.2** - Fast build tool and dev server
 - **SWC** - Super-fast TypeScript/JavaScript compiler
 - **Vitest** - Unit testing framework
 - **Prettier** - Code formatting
 
 ### **Backend & Deployment**
+
 - **Express.js 4.18.2** - Server-side API
 - **Netlify Functions** - Serverless deployment
 - **Cors** - Cross-origin resource sharing
@@ -64,59 +72,66 @@ A comprehensive, feature-complete WhatsApp clone built with React 18, TypeScript
 ## 📱 Complete Page Structure
 
 ### **🏠 Main Navigation (5 Tabs)**
-| Page | Route | Description |
-|------|-------|-------------|
-| **Updates** | `/` | Status updates feed with stories |
-| **Calls** | `/calls` | Call history and favorites |
-| **Communities** | `/communities` | Group communities discovery |
-| **Chats** | `/chats` | Main conversation list ⭐ |
-| **Settings** | `/settings` | App configuration and preferences |
+
+| Page            | Route          | Description                       |
+| --------------- | -------------- | --------------------------------- |
+| **Updates**     | `/`            | Status updates feed with stories  |
+| **Calls**       | `/calls`       | Call history and favorites        |
+| **Communities** | `/communities` | Group communities discovery       |
+| **Chats**       | `/chats`       | Main conversation list ⭐         |
+| **Settings**    | `/settings`    | App configuration and preferences |
 
 ### **💬 Chat & Messaging (8 Pages)**
-| Page | Route | Description |
-|------|-------|-------------|
-| **Individual Chat** | `/chat/:id` | Single conversation interface |
-| **New Chat** | `/new-chat` | Contact selection for new chats |
-| **Group Creation** | `/new-group` | Create group with participants |
-| **Group Info** | `/group-info/:id` | Group management and settings |
-| **Search** | `/search` | Global search across chats/messages |
-| **Forward Message** | `/forward-message/:messageId` | Share messages to multiple chats |
-| **Archive** | `/archive` | Archived conversations management |
-| **Starred Messages** | `/starred-messages` | Important/starred messages |
+
+| Page                 | Route                         | Description                         |
+| -------------------- | ----------------------------- | ----------------------------------- |
+| **Individual Chat**  | `/chat/:id`                   | Single conversation interface       |
+| **New Chat**         | `/new-chat`                   | Contact selection for new chats     |
+| **Group Creation**   | `/new-group`                  | Create group with participants      |
+| **Group Info**       | `/group-info/:id`             | Group management and settings       |
+| **Search**           | `/search`                     | Global search across chats/messages |
+| **Forward Message**  | `/forward-message/:messageId` | Share messages to multiple chats    |
+| **Archive**          | `/archive`                    | Archived conversations management   |
+| **Starred Messages** | `/starred-messages`           | Important/starred messages          |
 
 ### **👤 User & Profile (5 Pages)**
-| Page | Route | Description |
-|------|-------|-------------|
-| **User Profile** | `/profile` | Own profile management |
-| **Contact Info** | `/contact/:id` | Individual contact details |
-| **Contacts List** | `/contacts` | Browse all contacts |
-| **Login** | `/login` | User authentication |
-| **Registration** | `/register` | New user account creation |
+
+| Page              | Route          | Description                |
+| ----------------- | -------------- | -------------------------- |
+| **User Profile**  | `/profile`     | Own profile management     |
+| **Contact Info**  | `/contact/:id` | Individual contact details |
+| **Contacts List** | `/contacts`    | Browse all contacts        |
+| **Login**         | `/login`       | User authentication        |
+| **Registration**  | `/register`    | New user account creation  |
 
 ### **📸 Media & Content (3 Pages)**
-| Page | Route | Description |
-|------|-------|-------------|
-| **Camera** | `/camera` | Photo/video capture interface |
-| **Status Camera** | `/status-camera` | Create status with media/text |
-| **Media Gallery** | `/media-gallery/:id` | Shared media browser |
+
+| Page              | Route                | Description                   |
+| ----------------- | -------------------- | ----------------------------- |
+| **Camera**        | `/camera`            | Photo/video capture interface |
+| **Status Camera** | `/status-camera`     | Create status with media/text |
+| **Media Gallery** | `/media-gallery/:id` | Shared media browser          |
 
 ### **⚙️ Settings & Privacy (3 Pages)**
-| Page | Route | Description |
-|------|-------|-------------|
-| **Privacy Settings** | `/privacy-settings` | Who can see your information |
-| **Notification Settings** | `/notification-settings` | Customize all notifications |
-| **Meta AI** | `/meta-ai` | AI assistant integration |
+
+| Page                      | Route                    | Description                  |
+| ------------------------- | ------------------------ | ---------------------------- |
+| **Privacy Settings**      | `/privacy-settings`      | Who can see your information |
+| **Notification Settings** | `/notification-settings` | Customize all notifications  |
+| **Meta AI**               | `/meta-ai`               | AI assistant integration     |
 
 ### **📊 Status & Stories (3 Pages)**
-| Page | Route | Description |
-|------|-------|-------------|
-| **Status Detail** | `/status/:id` | Individual status viewer |
-| **Status Reaction** | `/status/:id/react` | React to status updates |
-| **404 Page** | `*` | Not found error page |
+
+| Page                | Route               | Description              |
+| ------------------- | ------------------- | ------------------------ |
+| **Status Detail**   | `/status/:id`       | Individual status viewer |
+| **Status Reaction** | `/status/:id/react` | React to status updates  |
+| **404 Page**        | `*`                 | Not found error page     |
 
 ## 🚀 Getting Started
 
 ### **Prerequisites**
+
 - **Node.js** 16.0+ (recommended: 18.0+)
 - **npm** or **yarn** package manager
 - **Git** for version control
@@ -124,32 +139,38 @@ A comprehensive, feature-complete WhatsApp clone built with React 18, TypeScript
 ### **Quick Start**
 
 1. **Clone the repository:**
+
 ```bash
 git clone <repository-url>
 cd whatsapp-clone
 ```
 
 2. **Install dependencies:**
+
 ```bash
 npm install
 ```
 
 3. **Start development server:**
+
 ```bash
 npm run dev
 ```
 
 4. **Open in browser:**
+
 ```
 http://localhost:5173
 ```
 
 ### **Build for Production**
+
 ```bash
 npm run build
 ```
 
 ### **Run Tests**
+
 ```bash
 npm test
 ```
@@ -205,32 +226,28 @@ whatsapp-clone/
 ## 🎨 Design System
 
 ### **📏 Design Principles**
+
 - **Mobile-First**: Designed for mobile devices with responsive scaling
 - **Pixel-Perfect**: Faithful recreation of WhatsApp's iOS interface
 - **Accessible**: WCAG compliant with proper touch targets
 - **Performance**: Optimized for smooth 60fps interactions
 
 ### **🎨 Color Palette**
+
 ```css
 /* Primary Colors */
---whatsapp-green: #1DAB61    /* Main brand color */
---whatsapp-dark: #0A0A0A     /* Text and icons */
---background: #F4F4F4        /* Page background */
---card-background: #FFFFFF   /* Card/container background */
-
-/* Text Colors */
---text-primary: #0A0A0A      /* Main text */
---text-secondary: #667781    /* Secondary text */
---text-muted: #999999        /* Muted text */
-
-/* Status Colors */
---success: #1DAB61           /* Success states */
---error: #F44336             /* Error states */
---warning: #FF9800           /* Warning states */
---info: #2196F3              /* Information states */
+--whatsapp-green: #1dab61 /* Main brand color */ --whatsapp-dark: #0a0a0a
+  /* Text and icons */ --background: #f4f4f4 /* Page background */
+  --card-background: #ffffff /* Card/container background */ /* Text Colors */
+  --text-primary: #0a0a0a /* Main text */ --text-secondary: #667781
+  /* Secondary text */ --text-muted: #999999 /* Muted text */
+  /* Status Colors */ --success: #1dab61 /* Success states */ --error: #f44336
+  /* Error states */ --warning: #ff9800 /* Warning states */ --info: #2196f3
+  /* Information states */;
 ```
 
 ### **📱 Mobile Specifications**
+
 - **Container Width**: 393px (iPhone 14 Pro)
 - **Touch Targets**: Minimum 44px × 44px
 - **Typography**: SF Pro Text font family
@@ -240,6 +257,7 @@ whatsapp-clone/
 ## 🔧 Key Features Deep Dive
 
 ### **💬 Chat System**
+
 - Real-time message interface with proper threading
 - Message status indicators (sent, delivered, read)
 - Rich media support (photos, videos, documents)
@@ -247,6 +265,7 @@ whatsapp-clone/
 - Forward and star message functionality
 
 ### **👥 Contact Management**
+
 - Complete contact list with search
 - Online status indicators
 - Contact actions (call, message, info)
@@ -254,6 +273,7 @@ whatsapp-clone/
 - Contact synchronization simulation
 
 ### **🔒 Privacy & Security**
+
 - Granular privacy controls for profile visibility
 - Last seen, profile photo, and about privacy
 - Read receipts management
@@ -261,6 +281,7 @@ whatsapp-clone/
 - End-to-end encryption indicators
 
 ### **📸 Media Features**
+
 - In-app camera with photo/video capture
 - Status creation with text, photos, and videos
 - Media gallery with organized browsing
@@ -268,6 +289,7 @@ whatsapp-clone/
 - Media download and sharing
 
 ### **⚙️ Settings Management**
+
 - Comprehensive notification settings
 - Privacy preference controls
 - Account management options
@@ -277,12 +299,14 @@ whatsapp-clone/
 ## 🧪 Testing & Quality
 
 ### **Testing Strategy**
+
 - **Unit Tests**: Component and utility testing with Vitest
 - **Type Safety**: Full TypeScript coverage
 - **Code Quality**: Prettier formatting and ESLint rules
 - **Performance**: Optimized bundle sizes and lazy loading
 
 ### **Browser Support**
+
 - **Chrome**: Latest 2 versions
 - **Safari**: Latest 2 versions (iOS focus)
 - **Firefox**: Latest 2 versions
@@ -291,17 +315,20 @@ whatsapp-clone/
 ## 🚀 Deployment
 
 ### **Production Build**
+
 ```bash
 npm run build
 ```
 
 ### **Netlify Deployment**
+
 1. Connect repository to Netlify
 2. Set build command: `npm run build`
 3. Set publish directory: `dist/spa`
 4. Deploy automatically on git push
 
 ### **Environment Variables**
+
 ```env
 VITE_API_URL=your-api-url
 VITE_APP_NAME=WhatsApp Clone
@@ -310,6 +337,7 @@ VITE_APP_NAME=WhatsApp Clone
 ## 🤝 Contributing
 
 ### **Development Workflow**
+
 1. Fork the repository
 2. Create feature branch: `git checkout -b feature/amazing-feature`
 3. Commit changes: `git commit -m 'Add amazing feature'`
@@ -317,6 +345,7 @@ VITE_APP_NAME=WhatsApp Clone
 5. Open a Pull Request
 
 ### **Code Standards**
+
 - **TypeScript**: Strict mode enabled
 - **Prettier**: Auto-formatting on save
 - **Naming**: PascalCase for components, camelCase for functions
@@ -325,6 +354,7 @@ VITE_APP_NAME=WhatsApp Clone
 ## 📚 Learning Resources
 
 ### **Technologies Used**
+
 - [React Documentation](https://react.dev/)
 - [TypeScript Handbook](https://www.typescriptlang.org/docs/)
 - [Tailwind CSS Guide](https://tailwindcss.com/docs)
@@ -341,6 +371,7 @@ VITE_APP_NAME=WhatsApp Clone
 ## 🎯 Future Enhancements
 
 ### **Planned Features**
+
 - [ ] Real-time messaging with WebSocket
 - [ ] Push notifications
 - [ ] Offline support with service workers
@@ -351,6 +382,7 @@ VITE_APP_NAME=WhatsApp Clone
 - [ ] Desktop responsive design
 
 ### **Technical Improvements**
+
 - [ ] Redis caching layer
 - [ ] Database integration
 - [ ] Authentication JWT implementation
@@ -359,9 +391,10 @@ VITE_APP_NAME=WhatsApp Clone
 
 ## 📄 License
 
-This project is created for **educational and demonstration purposes**. 
+This project is created for **educational and demonstration purposes**.
 
 ### **Important Notice**
+
 - This is a learning project and UI recreation
 - Not affiliated with Meta/WhatsApp
 - All WhatsApp trademarks belong to Meta Platforms, Inc.

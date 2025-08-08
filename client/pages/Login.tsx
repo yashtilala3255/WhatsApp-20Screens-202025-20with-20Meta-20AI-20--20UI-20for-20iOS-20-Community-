@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
-import { useForm } from 'react-hook-form';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { z } from 'zod';
-import { Link, useNavigate } from 'react-router-dom';
-import StatusBar from '../components/StatusBar';
-import { Button } from '../components/ui/button';
-import { Input } from '../components/ui/input';
+import React, { useState } from "react";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { z } from "zod";
+import { Link, useNavigate } from "react-router-dom";
+import StatusBar from "../components/StatusBar";
+import { Button } from "../components/ui/button";
+import { Input } from "../components/ui/input";
 import {
   Form,
   FormControl,
@@ -13,15 +13,16 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from '../components/ui/form';
-import { useToast } from '../hooks/use-toast';
+} from "../components/ui/form";
+import { useToast } from "../hooks/use-toast";
 
 const loginSchema = z.object({
-  phoneNumber: z.string()
-    .min(10, 'Phone number must be at least 10 digits')
-    .max(15, 'Phone number too long')
-    .regex(/^\+?[\d\s\-\(\)]+$/, 'Invalid phone number format'),
-  password: z.string().min(6, 'Password must be at least 6 characters'),
+  phoneNumber: z
+    .string()
+    .min(10, "Phone number must be at least 10 digits")
+    .max(15, "Phone number too long")
+    .regex(/^\+?[\d\s\-\(\)]+$/, "Invalid phone number format"),
+  password: z.string().min(6, "Password must be at least 6 characters"),
 });
 
 type LoginFormData = z.infer<typeof loginSchema>;
@@ -34,8 +35,8 @@ export default function Login() {
   const form = useForm<LoginFormData>({
     resolver: zodResolver(loginSchema),
     defaultValues: {
-      phoneNumber: '',
-      password: '',
+      phoneNumber: "",
+      password: "",
     },
   });
 
@@ -43,18 +44,18 @@ export default function Login() {
     setIsLoading(true);
     try {
       // TODO: Implement actual login API call
-      console.log('Login data:', data);
-      
+      console.log("Login data:", data);
+
       // Simulate API call
-      await new Promise(resolve => setTimeout(resolve, 1500));
-      
+      await new Promise((resolve) => setTimeout(resolve, 1500));
+
       toast({
         title: "Login Successful!",
         description: "Welcome back to WhatsApp!",
       });
-      
+
       // Navigate to main app after successful login
-      navigate('/');
+      navigate("/");
     } catch (error) {
       toast({
         title: "Login Failed",
@@ -69,12 +70,12 @@ export default function Login() {
   return (
     <div className="min-h-screen bg-[#F4F4F4]">
       <StatusBar />
-      
+
       <div className="bg-white">
         {/* Header */}
         <div className="flex items-center justify-between px-4 py-4 border-b border-gray-200">
-          <Link 
-            to="/" 
+          <Link
+            to="/"
             className="flex items-center justify-center w-8 h-8 rounded-full hover:bg-gray-100"
           >
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -105,7 +106,9 @@ export default function Login() {
               />
             </svg>
           </div>
-          <h2 className="text-[24px] font-bold text-black mb-2">Welcome Back</h2>
+          <h2 className="text-[24px] font-bold text-black mb-2">
+            Welcome Back
+          </h2>
           <p className="text-[16px] text-[#666666] leading-relaxed">
             Sign in to continue your conversations with friends and family.
           </p>
@@ -163,8 +166,8 @@ export default function Login() {
 
               {/* Forgot Password */}
               <div className="text-right">
-                <Link 
-                  to="/forgot-password" 
+                <Link
+                  to="/forgot-password"
                   className="text-[14px] text-[#1DAB61] font-medium underline"
                 >
                   Forgot Password?
@@ -183,7 +186,7 @@ export default function Login() {
                     Signing In...
                   </div>
                 ) : (
-                  'Sign In'
+                  "Sign In"
                 )}
               </Button>
             </form>
@@ -192,10 +195,10 @@ export default function Login() {
           {/* Create Account */}
           <div className="text-center mt-6">
             <span className="text-[14px] text-[#666666]">
-              Don't have an account?{' '}
+              Don't have an account?{" "}
             </span>
-            <Link 
-              to="/register" 
+            <Link
+              to="/register"
               className="text-[14px] text-[#1DAB61] font-medium underline"
             >
               Create Account

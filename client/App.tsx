@@ -54,9 +54,15 @@ function App() {
             <Route path="/media-gallery/:id" element={<MediaGallery />} />
             <Route path="/camera" element={<Camera />} />
             <Route path="/status-camera" element={<StatusCamera />} />
-            <Route path="/forward-message/:messageId" element={<ForwardMessage />} />
+            <Route
+              path="/forward-message/:messageId"
+              element={<ForwardMessage />}
+            />
             <Route path="/privacy-settings" element={<PrivacySettings />} />
-            <Route path="/notification-settings" element={<NotificationSettings />} />
+            <Route
+              path="/notification-settings"
+              element={<NotificationSettings />}
+            />
             <Route path="/status/:id" element={<StatusDetail />} />
             <Route path="/status/:id/react" element={<StatusReaction />} />
             <Route path="*" element={<NotFound />} />

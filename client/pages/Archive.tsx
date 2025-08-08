@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import StatusBar from '../components/StatusBar';
+import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import StatusBar from "../components/StatusBar";
 
 interface ArchivedChat {
   id: string;
@@ -15,94 +15,102 @@ interface ArchivedChat {
 
 const mockArchivedChats: ArchivedChat[] = [
   {
-    id: '9',
-    name: 'Old School Friends',
-    lastMessage: 'Remember when we used to...',
-    time: '2 weeks ago',
-    avatar: 'https://api.builder.io/api/v1/image/assets/TEMP/old-friends-avatar?width=116',
+    id: "9",
+    name: "Old School Friends",
+    lastMessage: "Remember when we used to...",
+    time: "2 weeks ago",
+    avatar:
+      "https://api.builder.io/api/v1/image/assets/TEMP/old-friends-avatar?width=116",
     isGroup: true,
-    archivedAt: '2 weeks ago',
+    archivedAt: "2 weeks ago",
   },
   {
-    id: '10',
-    name: 'Calvin Klein',
-    lastMessage: 'Thanks for the fashion advice!',
-    time: '1 month ago',
-    avatar: 'https://api.builder.io/api/v1/image/assets/TEMP/calvin-avatar?width=116',
-    archivedAt: '1 month ago',
+    id: "10",
+    name: "Calvin Klein",
+    lastMessage: "Thanks for the fashion advice!",
+    time: "1 month ago",
+    avatar:
+      "https://api.builder.io/api/v1/image/assets/TEMP/calvin-avatar?width=116",
+    archivedAt: "1 month ago",
   },
   {
-    id: '11',
-    name: 'Needles',
-    lastMessage: 'Nobody calls me chicken!',
-    time: '2 months ago',
-    avatar: 'https://api.builder.io/api/v1/image/assets/TEMP/needles-avatar?width=116',
+    id: "11",
+    name: "Needles",
+    lastMessage: "Nobody calls me chicken!",
+    time: "2 months ago",
+    avatar:
+      "https://api.builder.io/api/v1/image/assets/TEMP/needles-avatar?width=116",
     unreadCount: 2,
-    archivedAt: '2 months ago',
+    archivedAt: "2 months ago",
   },
   {
-    id: '12',
-    name: 'Mayor Wilson',
-    lastMessage: 'Hill Valley is looking great!',
-    time: '3 months ago',
-    avatar: 'https://api.builder.io/api/v1/image/assets/TEMP/wilson-avatar?width=116',
-    archivedAt: '3 months ago',
+    id: "12",
+    name: "Mayor Wilson",
+    lastMessage: "Hill Valley is looking great!",
+    time: "3 months ago",
+    avatar:
+      "https://api.builder.io/api/v1/image/assets/TEMP/wilson-avatar?width=116",
+    archivedAt: "3 months ago",
   },
   {
-    id: '13',
-    name: 'Twin Pines Mall',
-    lastMessage: 'Security incident reported',
-    time: '6 months ago',
-    avatar: 'https://api.builder.io/api/v1/image/assets/TEMP/mall-avatar?width=116',
+    id: "13",
+    name: "Twin Pines Mall",
+    lastMessage: "Security incident reported",
+    time: "6 months ago",
+    avatar:
+      "https://api.builder.io/api/v1/image/assets/TEMP/mall-avatar?width=116",
     isGroup: true,
-    archivedAt: '6 months ago',
+    archivedAt: "6 months ago",
   },
 ];
 
 export default function Archive() {
   const navigate = useNavigate();
-  const [searchQuery, setSearchQuery] = useState('');
+  const [searchQuery, setSearchQuery] = useState("");
   const [selectedChats, setSelectedChats] = useState<string[]>([]);
   const [isSelectionMode, setIsSelectionMode] = useState(false);
 
-  const filteredChats = mockArchivedChats.filter(chat =>
-    chat.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    chat.lastMessage.toLowerCase().includes(searchQuery.toLowerCase())
+  const filteredChats = mockArchivedChats.filter(
+    (chat) =>
+      chat.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      chat.lastMessage.toLowerCase().includes(searchQuery.toLowerCase()),
   );
 
   const toggleChatSelection = (chatId: string) => {
-    setSelectedChats(prev =>
+    setSelectedChats((prev) =>
       prev.includes(chatId)
-        ? prev.filter(id => id !== chatId)
-        : [...prev, chatId]
+        ? prev.filter((id) => id !== chatId)
+        : [...prev, chatId],
     );
   };
 
   const handleUnarchive = () => {
     // TODO: Implement unarchive functionality
-    console.log('Unarchiving chats:', selectedChats);
+    console.log("Unarchiving chats:", selectedChats);
     setSelectedChats([]);
     setIsSelectionMode(false);
   };
 
   const handleDelete = () => {
     // TODO: Implement delete functionality
-    console.log('Deleting chats:', selectedChats);
+    console.log("Deleting chats:", selectedChats);
     setSelectedChats([]);
     setIsSelectionMode(false);
   };
 
   const ArchivedChatItem: React.FC<{ chat: ArchivedChat }> = ({ chat }) => (
-    <div className={`flex items-center gap-3 px-4 py-3 ${
-      isSelectionMode ? 'bg-gray-50' : 'hover:bg-gray-50 active:bg-gray-100'
-    } transition-colors`}>
+    <div
+      className={`flex items-center gap-3 px-4 py-3 ${
+        isSelectionMode ? "bg-gray-50" : "hover:bg-gray-50 active:bg-gray-100"
+      } transition-colors`}
+    >
       {isSelectionMode && (
         <button
           onClick={() => toggleChatSelection(chat.id)}
           className={`w-6 h-6 rounded-full border-2 flex items-center justify-center ${
             selectedChats.includes(chat.id)
-              ? 'bg-[#1DAB61] border-[#1DAB61]'
-              : 'border-[#CCCCCC]'
+              ? "bg-[#1DAB61] border-[#1DAB61]"
+              : "border-[#CCCCCC]"
           }`}
         >
           {selectedChats.includes(chat.id) && (
@@ -136,7 +144,8 @@ export default function Archive() {
               alt={chat.name}
               className="w-full h-full object-cover opacity-70"
               onError={(e) => {
-                e.currentTarget.src = 'https://api.builder.io/api/v1/image/assets/placeholder-avatar';
+                e.currentTarget.src =
+                  "https://api.builder.io/api/v1/image/assets/placeholder-avatar";
               }}
             />
           </div>
@@ -150,9 +159,21 @@ export default function Archive() {
                   strokeLinecap="round"
                   strokeLinejoin="round"
                 />
-                <circle cx="9" cy="7" r="4" stroke="white" strokeWidth="1.5"/>
-                <path d="M23 11L20 8L17 11" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                <path d="M20 8V16" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                <circle cx="9" cy="7" r="4" stroke="white" strokeWidth="1.5" />
+                <path
+                  d="M23 11L20 8L17 11"
+                  stroke="white"
+                  strokeWidth="1.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+                <path
+                  d="M20 8V16"
+                  stroke="white"
+                  strokeWidth="1.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
               </svg>
             </div>
           )}
@@ -167,19 +188,19 @@ export default function Archive() {
               {chat.time}
             </span>
           </div>
-          
+
           <div className="flex items-center justify-between">
             <p className="text-[15px] text-[#999999] truncate flex-1">
               {chat.lastMessage}
             </p>
-            
+
             {chat.unreadCount && (
               <div className="ml-2 bg-[#667781] text-white text-[12px] font-medium px-2 py-1 rounded-full min-w-[20px] flex items-center justify-center">
-                {chat.unreadCount > 99 ? '99+' : chat.unreadCount}
+                {chat.unreadCount > 99 ? "99+" : chat.unreadCount}
               </div>
             )}
           </div>
-          
+
           <p className="text-[13px] text-[#CCCCCC] mt-1">
             Archived {chat.archivedAt}
           </p>
@@ -195,9 +216,9 @@ export default function Archive() {
           className="p-2 rounded-full hover:bg-gray-200 transition-colors"
         >
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-            <circle cx="12" cy="5" r="1" fill="#667781"/>
-            <circle cx="12" cy="12" r="1" fill="#667781"/>
-            <circle cx="12" cy="19" r="1" fill="#667781"/>
+            <circle cx="12" cy="5" r="1" fill="#667781" />
+            <circle cx="12" cy="12" r="1" fill="#667781" />
+            <circle cx="12" cy="19" r="1" fill="#667781" />
           </svg>
         </button>
       )}
@@ -211,7 +232,7 @@ export default function Archive() {
       {/* Header */}
       <div className="flex items-center justify-between px-4 py-3 bg-white border-b border-gray-100">
         <div className="flex items-center gap-4">
-          <button 
+          <button
             onClick={() => navigate(-1)}
             className="p-2 rounded-full hover:bg-gray-100 transition-colors"
           >
@@ -227,7 +248,9 @@ export default function Archive() {
           </button>
           <div>
             <h1 className="text-[20px] font-semibold text-black">
-              {isSelectionMode ? `${selectedChats.length} selected` : 'Archived'}
+              {isSelectionMode
+                ? `${selectedChats.length} selected`
+                : "Archived"}
             </h1>
             {!isSelectionMode && filteredChats.length > 0 && (
               <p className="text-[14px] text-[#667781]">
@@ -309,8 +332,8 @@ export default function Archive() {
             </button>
           </div>
         ) : (
-          <button 
-            onClick={() => navigate('/search')}
+          <button
+            onClick={() => navigate("/search")}
             className="p-2 rounded-full hover:bg-gray-100 transition-colors"
           >
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
@@ -337,14 +360,19 @@ export default function Archive() {
       {!isSelectionMode && (
         <div className="px-4 py-3 bg-white border-b border-gray-100">
           <div className="relative">
-            <svg 
-              width="16" 
-              height="16" 
-              viewBox="0 0 24 24" 
+            <svg
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
               className="absolute left-3 top-1/2 transform -translate-y-1/2 fill-[#667781]"
             >
-              <path d="M11 19C15.4183 19 19 15.4183 19 11C19 6.58172 15.4183 3 11 3C6.58172 3 3 6.58172 3 11C3 15.4183 6.58172 19 11 19Z" stroke="#667781" strokeWidth="2" fill="none"/>
-              <path d="M21 21L16.65 16.65" stroke="#667781" strokeWidth="2"/>
+              <path
+                d="M11 19C15.4183 19 19 15.4183 19 11C19 6.58172 15.4183 3 11 3C6.58172 3 3 6.58172 3 11C3 15.4183 6.58172 19 11 19Z"
+                stroke="#667781"
+                strokeWidth="2"
+                fill="none"
+              />
+              <path d="M21 21L16.65 16.65" stroke="#667781" strokeWidth="2" />
             </svg>
             <input
               type="text"
@@ -379,8 +407,8 @@ export default function Archive() {
                 </div>
               </div>
             )}
-            
-            {filteredChats.map(chat => (
+
+            {filteredChats.map((chat) => (
               <ArchivedChatItem key={chat.id} chat={chat} />
             ))}
           </div>
@@ -412,13 +440,12 @@ export default function Archive() {
               </svg>
             </div>
             <h3 className="text-[20px] font-medium text-[#667781] mb-2">
-              {searchQuery ? 'No archived chats found' : 'No archived chats'}
+              {searchQuery ? "No archived chats found" : "No archived chats"}
             </h3>
             <p className="text-[16px] text-[#667781] text-center leading-relaxed">
-              {searchQuery 
-                ? "Try searching for something else" 
-                : "Swipe down on any chat in your main chat list to archive it"
-              }
+              {searchQuery
+                ? "Try searching for something else"
+                : "Swipe down on any chat in your main chat list to archive it"}
             </p>
           </div>
         )}

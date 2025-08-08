@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import StatusBar from '../components/StatusBar';
+import React, { useState, useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import StatusBar from "../components/StatusBar";
 
 interface SearchResult {
   id: string;
-  type: 'chat' | 'contact' | 'message';
+  type: "chat" | "contact" | "message";
   title: string;
   subtitle: string;
   avatar?: string;
@@ -15,47 +15,57 @@ interface SearchResult {
 
 const mockSearchResults: SearchResult[] = [
   {
-    id: '1',
-    type: 'chat',
-    title: 'Marty McFly',
-    subtitle: 'Great Scott! We need to get back to 1985!',
-    avatar: 'https://api.builder.io/api/v1/image/assets/TEMP/7a8c2c85?width=116',
-    chatId: '1',
+    id: "1",
+    type: "chat",
+    title: "Marty McFly",
+    subtitle: "Great Scott! We need to get back to 1985!",
+    avatar:
+      "https://api.builder.io/api/v1/image/assets/TEMP/7a8c2c85?width=116",
+    chatId: "1",
   },
   {
-    id: '2',
-    type: 'contact',
-    title: 'Doc Brown',
-    subtitle: '+1 555-0124',
-    avatar: 'https://api.builder.io/api/v1/image/assets/TEMP/4c4a5af127d840b7402719dbbfdd77f20d2b99a7?width=116',
-    chatId: '2',
+    id: "2",
+    type: "contact",
+    title: "Doc Brown",
+    subtitle: "+1 555-0124",
+    avatar:
+      "https://api.builder.io/api/v1/image/assets/TEMP/4c4a5af127d840b7402719dbbfdd77f20d2b99a7?width=116",
+    chatId: "2",
   },
   {
-    id: '3',
-    type: 'message',
-    title: 'Jennifer Parker',
-    subtitle: 'In Jennifer Parker',
-    avatar: 'https://api.builder.io/api/v1/image/assets/TEMP/2f74a7b374d94e89d563d84ba3c9febd0fc2b66c?width=116',
-    chatId: '3',
-    timestamp: '2:30 PM',
-    messagePreview: 'Are we still on for tonight? I was thinking we could...',
+    id: "3",
+    type: "message",
+    title: "Jennifer Parker",
+    subtitle: "In Jennifer Parker",
+    avatar:
+      "https://api.builder.io/api/v1/image/assets/TEMP/2f74a7b374d94e89d563d84ba3c9febd0fc2b66c?width=116",
+    chatId: "3",
+    timestamp: "2:30 PM",
+    messagePreview: "Are we still on for tonight? I was thinking we could...",
   },
   {
-    id: '4',
-    type: 'message',
-    title: 'Hill Valley High School',
-    subtitle: 'In Hill Valley High School group',
-    avatar: 'https://api.builder.io/api/v1/image/assets/TEMP/school-avatar?width=116',
-    chatId: '8',
-    timestamp: 'Yesterday',
-    messagePreview: 'Welcome to the class of 1985! Please review the upcoming...',
+    id: "4",
+    type: "message",
+    title: "Hill Valley High School",
+    subtitle: "In Hill Valley High School group",
+    avatar:
+      "https://api.builder.io/api/v1/image/assets/TEMP/school-avatar?width=116",
+    chatId: "8",
+    timestamp: "Yesterday",
+    messagePreview:
+      "Welcome to the class of 1985! Please review the upcoming...",
   },
 ];
 
 export default function Search() {
   const navigate = useNavigate();
-  const [searchQuery, setSearchQuery] = useState('');
-  const [recentSearches, setRecentSearches] = useState(['Great Scott', 'DeLorean', '1985', 'Jennifer']);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [recentSearches, setRecentSearches] = useState([
+    "Great Scott",
+    "DeLorean",
+    "1985",
+    "Jennifer",
+  ]);
   const [searchResults, setSearchResults] = useState<SearchResult[]>([]);
   const [isSearching, setIsSearching] = useState(false);
 
@@ -64,10 +74,13 @@ export default function Search() {
       setIsSearching(true);
       // Simulate search delay
       const timer = setTimeout(() => {
-        const filtered = mockSearchResults.filter(result =>
-          result.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-          result.subtitle.toLowerCase().includes(searchQuery.toLowerCase()) ||
-          result.messagePreview?.toLowerCase().includes(searchQuery.toLowerCase())
+        const filtered = mockSearchResults.filter(
+          (result) =>
+            result.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+            result.subtitle.toLowerCase().includes(searchQuery.toLowerCase()) ||
+            result.messagePreview
+              ?.toLowerCase()
+              .includes(searchQuery.toLowerCase()),
         );
         setSearchResults(filtered);
         setIsSearching(false);
@@ -84,7 +97,7 @@ export default function Search() {
     setSearchQuery(query);
     // Add to recent searches if not already there
     if (query.trim() && !recentSearches.includes(query)) {
-      setRecentSearches(prev => [query, ...prev.slice(0, 9)]);
+      setRecentSearches((prev) => [query, ...prev.slice(0, 9)]);
     }
   };
 
@@ -94,7 +107,7 @@ export default function Search() {
 
   const getResultIcon = (type: string) => {
     switch (type) {
-      case 'chat':
+      case "chat":
         return (
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
             <path
@@ -106,7 +119,7 @@ export default function Search() {
             />
           </svg>
         );
-      case 'contact':
+      case "contact":
         return (
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
             <path
@@ -116,10 +129,10 @@ export default function Search() {
               strokeLinecap="round"
               strokeLinejoin="round"
             />
-            <circle cx="12" cy="7" r="4" stroke="#667781" strokeWidth="2"/>
+            <circle cx="12" cy="7" r="4" stroke="#667781" strokeWidth="2" />
           </svg>
         );
-      case 'message':
+      case "message":
         return (
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
             <path
@@ -156,7 +169,7 @@ export default function Search() {
 
       {/* Header */}
       <div className="flex items-center gap-4 px-4 py-3 bg-white border-b border-gray-100">
-        <button 
+        <button
           onClick={() => navigate(-1)}
           className="p-2 rounded-full hover:bg-gray-100 transition-colors"
         >
@@ -176,14 +189,19 @@ export default function Search() {
       {/* Search Bar */}
       <div className="px-4 py-3 bg-white border-b border-gray-100">
         <div className="relative">
-          <svg 
-            width="16" 
-            height="16" 
-            viewBox="0 0 24 24" 
+          <svg
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
             className="absolute left-3 top-1/2 transform -translate-y-1/2 fill-[#667781]"
           >
-            <path d="M11 19C15.4183 19 19 15.4183 19 11C19 6.58172 15.4183 3 11 3C6.58172 3 3 6.58172 3 11C3 15.4183 6.58172 19 11 19Z" stroke="#667781" strokeWidth="2" fill="none"/>
-            <path d="M21 21L16.65 16.65" stroke="#667781" strokeWidth="2"/>
+            <path
+              d="M11 19C15.4183 19 19 15.4183 19 11C19 6.58172 15.4183 3 11 3C6.58172 3 3 6.58172 3 11C3 15.4183 6.58172 19 11 19Z"
+              stroke="#667781"
+              strokeWidth="2"
+              fill="none"
+            />
+            <path d="M21 21L16.65 16.65" stroke="#667781" strokeWidth="2" />
           </svg>
           <input
             type="text"
@@ -195,7 +213,7 @@ export default function Search() {
           />
           {searchQuery && (
             <button
-              onClick={() => setSearchQuery('')}
+              onClick={() => setSearchQuery("")}
               className="absolute right-3 top-1/2 transform -translate-y-1/2 p-1 rounded-full hover:bg-gray-200 transition-colors"
             >
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
@@ -251,8 +269,16 @@ export default function Search() {
               <div className="text-center">
                 <div className="w-24 h-24 bg-[#F0F2F5] rounded-full flex items-center justify-center mx-auto mb-4">
                   <svg width="40" height="40" viewBox="0 0 24 24" fill="none">
-                    <path d="M11 19C15.4183 19 19 15.4183 19 11C19 6.58172 15.4183 3 11 3C6.58172 3 3 6.58172 3 11C3 15.4183 6.58172 19 11 19Z" stroke="#667781" strokeWidth="2"/>
-                    <path d="M21 21L16.65 16.65" stroke="#667781" strokeWidth="2"/>
+                    <path
+                      d="M11 19C15.4183 19 19 15.4183 19 11C19 6.58172 15.4183 3 11 3C6.58172 3 3 6.58172 3 11C3 15.4183 6.58172 19 11 19Z"
+                      stroke="#667781"
+                      strokeWidth="2"
+                    />
+                    <path
+                      d="M21 21L16.65 16.65"
+                      stroke="#667781"
+                      strokeWidth="2"
+                    />
                   </svg>
                 </div>
                 <h3 className="text-[18px] font-medium text-[#667781] mb-2">
@@ -281,10 +307,14 @@ export default function Search() {
                     Results ({searchResults.length})
                   </span>
                 </div>
-                {searchResults.map(result => (
+                {searchResults.map((result) => (
                   <Link
                     key={result.id}
-                    to={result.chatId ? `/chat/${result.chatId}` : `/contact/${result.id}`}
+                    to={
+                      result.chatId
+                        ? `/chat/${result.chatId}`
+                        : `/contact/${result.id}`
+                    }
                     className="flex items-center gap-3 px-4 py-3 hover:bg-gray-50 active:bg-gray-100 transition-colors"
                   >
                     <div className="relative">
@@ -295,7 +325,8 @@ export default function Search() {
                             alt={result.title}
                             className="w-full h-full object-cover"
                             onError={(e) => {
-                              e.currentTarget.src = 'https://api.builder.io/api/v1/image/assets/placeholder-avatar';
+                              e.currentTarget.src =
+                                "https://api.builder.io/api/v1/image/assets/placeholder-avatar";
                             }}
                           />
                         </div>
@@ -323,7 +354,7 @@ export default function Search() {
                       <p className="text-[15px] text-[#667781] truncate">
                         {result.messagePreview || result.subtitle}
                       </p>
-                      {result.type === 'message' && result.subtitle && (
+                      {result.type === "message" && result.subtitle && (
                         <p className="text-[13px] text-[#1DAB61] truncate">
                           {result.subtitle}
                         </p>
@@ -336,8 +367,16 @@ export default function Search() {
               <div className="flex flex-col items-center justify-center py-16 px-8">
                 <div className="w-24 h-24 bg-[#F0F2F5] rounded-full flex items-center justify-center mb-4">
                   <svg width="40" height="40" viewBox="0 0 24 24" fill="none">
-                    <path d="M11 19C15.4183 19 19 15.4183 19 11C19 6.58172 15.4183 3 11 3C6.58172 3 3 6.58172 3 11C3 15.4183 6.58172 19 11 19Z" stroke="#667781" strokeWidth="2"/>
-                    <path d="M21 21L16.65 16.65" stroke="#667781" strokeWidth="2"/>
+                    <path
+                      d="M11 19C15.4183 19 19 15.4183 19 11C19 6.58172 15.4183 3 11 3C6.58172 3 3 6.58172 3 11C3 15.4183 6.58172 19 11 19Z"
+                      stroke="#667781"
+                      strokeWidth="2"
+                    />
+                    <path
+                      d="M21 21L16.65 16.65"
+                      stroke="#667781"
+                      strokeWidth="2"
+                    />
                   </svg>
                 </div>
                 <h3 className="text-[20px] font-medium text-[#667781] mb-2">

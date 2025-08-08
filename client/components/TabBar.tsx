@@ -3,15 +3,24 @@ import { Link, useLocation } from "react-router-dom";
 export function TabBar() {
   const location = useLocation();
   const currentPath = location.pathname;
-  
+
   // Determine active tab based on current path
   const getActiveTab = () => {
-    if (currentPath === '/' || currentPath === '/updates') return 'updates';
-    if (currentPath === '/calls') return 'calls';
-    if (currentPath === '/communities') return 'communities';
-    if (currentPath === '/settings') return 'settings';
-    if (currentPath === '/chats' || currentPath.startsWith('/chat') || currentPath.startsWith('/new-chat') || currentPath.startsWith('/group') || currentPath.startsWith('/contacts') || currentPath.startsWith('/search') || currentPath.startsWith('/archive')) return 'chats';
-    return 'updates';
+    if (currentPath === "/" || currentPath === "/updates") return "updates";
+    if (currentPath === "/calls") return "calls";
+    if (currentPath === "/communities") return "communities";
+    if (currentPath === "/settings") return "settings";
+    if (
+      currentPath === "/chats" ||
+      currentPath.startsWith("/chat") ||
+      currentPath.startsWith("/new-chat") ||
+      currentPath.startsWith("/group") ||
+      currentPath.startsWith("/contacts") ||
+      currentPath.startsWith("/search") ||
+      currentPath.startsWith("/archive")
+    )
+      return "chats";
+    return "updates";
   };
 
   const activeTab = getActiveTab();
@@ -81,7 +90,9 @@ export function TabBar() {
               />
             </svg>
           </div>
-          <div className={`text-[10px] font-medium tracking-[0.05px] ${activeTab === "chats" ? "text-black" : "text-[#767779]"}`}>
+          <div
+            className={`text-[10px] font-medium tracking-[0.05px] ${activeTab === "chats" ? "text-black" : "text-[#767779]"}`}
+          >
             Chats
           </div>
           {/* Badge */}

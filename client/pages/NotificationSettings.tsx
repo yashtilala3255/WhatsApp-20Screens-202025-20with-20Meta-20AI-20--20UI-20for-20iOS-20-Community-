@@ -1,12 +1,12 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import StatusBar from '../components/StatusBar';
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import StatusBar from "../components/StatusBar";
 
 interface NotificationSetting {
   id: string;
   title: string;
   description?: string;
-  type: 'toggle' | 'option' | 'time';
+  type: "toggle" | "option" | "time";
   enabled?: boolean;
   options?: string[];
   currentValue?: string;
@@ -14,45 +14,59 @@ interface NotificationSetting {
 
 const notificationSettings: NotificationSetting[] = [
   {
-    id: 'conversation_tones',
-    title: 'Conversation Tones',
-    description: 'Play sounds for incoming and outgoing messages',
-    type: 'toggle',
+    id: "conversation_tones",
+    title: "Conversation Tones",
+    description: "Play sounds for incoming and outgoing messages",
+    type: "toggle",
     enabled: true,
   },
   {
-    id: 'message_notifications',
-    title: 'Show Notifications',
-    type: 'toggle',
+    id: "message_notifications",
+    title: "Show Notifications",
+    type: "toggle",
     enabled: true,
   },
   {
-    id: 'notification_tone',
-    title: 'Notification Tone',
-    type: 'option',
-    options: ['Default', 'Note', 'Bamboo', 'Chime', 'Chord', 'Circles'],
-    currentValue: 'Default',
+    id: "notification_tone",
+    title: "Notification Tone",
+    type: "option",
+    options: ["Default", "Note", "Bamboo", "Chime", "Chord", "Circles"],
+    currentValue: "Default",
   },
   {
-    id: 'vibrate',
-    title: 'Vibrate',
-    type: 'option',
-    options: ['Default', 'Short', 'Long', 'Off'],
-    currentValue: 'Default',
+    id: "vibrate",
+    title: "Vibrate",
+    type: "option",
+    options: ["Default", "Short", "Long", "Off"],
+    currentValue: "Default",
   },
   {
-    id: 'popup_notification',
-    title: 'Popup Notification',
-    type: 'option',
-    options: ['No Popup', 'Only when screen on', 'Only when screen off', 'Always show popup'],
-    currentValue: 'Only when screen on',
+    id: "popup_notification",
+    title: "Popup Notification",
+    type: "option",
+    options: [
+      "No Popup",
+      "Only when screen on",
+      "Only when screen off",
+      "Always show popup",
+    ],
+    currentValue: "Only when screen on",
   },
   {
-    id: 'light',
-    title: 'Light',
-    type: 'option',
-    options: ['White', 'Red', 'Yellow', 'Green', 'Cyan', 'Blue', 'Purple', 'None'],
-    currentValue: 'White',
+    id: "light",
+    title: "Light",
+    type: "option",
+    options: [
+      "White",
+      "Red",
+      "Yellow",
+      "Green",
+      "Cyan",
+      "Blue",
+      "Purple",
+      "None",
+    ],
+    currentValue: "White",
   },
 ];
 
@@ -62,32 +76,32 @@ export default function NotificationSettings() {
   const [selectedSetting, setSelectedSetting] = useState<string | null>(null);
 
   const toggleSetting = (settingId: string) => {
-    setSettings(prev =>
-      prev.map(setting =>
+    setSettings((prev) =>
+      prev.map((setting) =>
         setting.id === settingId
           ? { ...setting, enabled: !setting.enabled }
-          : setting
-      )
+          : setting,
+      ),
     );
   };
 
   const updateSetting = (settingId: string, newValue: string) => {
-    setSettings(prev =>
-      prev.map(setting =>
+    setSettings((prev) =>
+      prev.map((setting) =>
         setting.id === settingId
           ? { ...setting, currentValue: newValue }
-          : setting
-      )
+          : setting,
+      ),
     );
     setSelectedSetting(null);
   };
 
-  const NotificationOption: React.FC<{ 
-    setting: NotificationSetting; 
-    isExpanded: boolean; 
+  const NotificationOption: React.FC<{
+    setting: NotificationSetting;
+    isExpanded: boolean;
     onToggle: () => void;
   }> = ({ setting, isExpanded, onToggle }) => {
-    if (setting.type === 'toggle') {
+    if (setting.type === "toggle") {
       return (
         <div className="bg-white border-b border-gray-100">
           <div className="flex items-center justify-between px-4 py-4">
@@ -104,12 +118,12 @@ export default function NotificationSettings() {
             <button
               onClick={() => toggleSetting(setting.id)}
               className={`relative w-12 h-7 rounded-full transition-colors ${
-                setting.enabled ? 'bg-[#1DAB61]' : 'bg-gray-300'
+                setting.enabled ? "bg-[#1DAB61]" : "bg-gray-300"
               }`}
             >
               <div
                 className={`absolute top-1 w-5 h-5 bg-white rounded-full transition-transform ${
-                  setting.enabled ? 'translate-x-6' : 'translate-x-1'
+                  setting.enabled ? "translate-x-6" : "translate-x-1"
                 }`}
               />
             </button>
@@ -133,11 +147,11 @@ export default function NotificationSettings() {
             <span className="text-[16px] text-[#667781]">
               {setting.currentValue}
             </span>
-            <svg 
-              width="8" 
-              height="14" 
-              viewBox="0 0 8 14" 
-              className={`transform transition-transform ${isExpanded ? 'rotate-90' : ''}`}
+            <svg
+              width="8"
+              height="14"
+              viewBox="0 0 8 14"
+              className={`transform transition-transform ${isExpanded ? "rotate-90" : ""}`}
             >
               <path
                 d="M1 13L7 7L1 1"
@@ -184,7 +198,7 @@ export default function NotificationSettings() {
 
       {/* Header */}
       <div className="flex items-center gap-4 px-4 py-3 bg-[#1DAB61]">
-        <button 
+        <button
           onClick={() => navigate(-1)}
           className="p-2 rounded-full hover:bg-white/10 transition-colors"
         >
@@ -211,14 +225,16 @@ export default function NotificationSettings() {
             </span>
           </div>
 
-          {settings.slice(0, 2).map(setting => (
+          {settings.slice(0, 2).map((setting) => (
             <NotificationOption
               key={setting.id}
               setting={setting}
               isExpanded={selectedSetting === setting.id}
-              onToggle={() => setSelectedSetting(
-                selectedSetting === setting.id ? null : setting.id
-              )}
+              onToggle={() =>
+                setSelectedSetting(
+                  selectedSetting === setting.id ? null : setting.id,
+                )
+              }
             />
           ))}
 
@@ -229,14 +245,16 @@ export default function NotificationSettings() {
             </span>
           </div>
 
-          {settings.slice(2, 6).map(setting => (
+          {settings.slice(2, 6).map((setting) => (
             <NotificationOption
               key={setting.id}
               setting={setting}
               isExpanded={selectedSetting === setting.id}
-              onToggle={() => setSelectedSetting(
-                selectedSetting === setting.id ? null : setting.id
-              )}
+              onToggle={() =>
+                setSelectedSetting(
+                  selectedSetting === setting.id ? null : setting.id,
+                )
+              }
             />
           ))}
 
@@ -370,7 +388,8 @@ export default function NotificationSettings() {
           {/* Info */}
           <div className="px-4 py-6">
             <p className="text-[14px] text-[#667781] leading-relaxed text-center">
-              Notifications for individual chats can be customized in each chat's settings.
+              Notifications for individual chats can be customized in each
+              chat's settings.
             </p>
           </div>
         </div>

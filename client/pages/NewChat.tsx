@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import StatusBar from '../components/StatusBar';
+import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import StatusBar from "../components/StatusBar";
 
 interface Contact {
   id: string;
@@ -14,97 +14,113 @@ interface Contact {
 
 const mockContacts: Contact[] = [
   {
-    id: '1',
-    name: 'Marty McFly',
-    phone: '+1 555-0123',
-    avatar: 'https://api.builder.io/api/v1/image/assets/TEMP/7a8c2c85?width=116',
+    id: "1",
+    name: "Marty McFly",
+    phone: "+1 555-0123",
+    avatar:
+      "https://api.builder.io/api/v1/image/assets/TEMP/7a8c2c85?width=116",
     isOnWhatsApp: true,
-    lastSeen: 'online',
-    about: 'Just a regular teenager... from 1985',
+    lastSeen: "online",
+    about: "Just a regular teenager... from 1985",
   },
   {
-    id: '2',
-    name: 'Doc Brown',
-    phone: '+1 555-0124',
-    avatar: 'https://api.builder.io/api/v1/image/assets/TEMP/4c4a5af127d840b7402719dbbfdd77f20d2b99a7?width=116',
+    id: "2",
+    name: "Doc Brown",
+    phone: "+1 555-0124",
+    avatar:
+      "https://api.builder.io/api/v1/image/assets/TEMP/4c4a5af127d840b7402719dbbfdd77f20d2b99a7?width=116",
     isOnWhatsApp: true,
-    lastSeen: 'last seen today at 2:30 PM',
-    about: 'Great Scott! 1.21 gigawatts!',
+    lastSeen: "last seen today at 2:30 PM",
+    about: "Great Scott! 1.21 gigawatts!",
   },
   {
-    id: '3',
-    name: 'Jennifer Parker',
-    phone: '+1 555-0125',
-    avatar: 'https://api.builder.io/api/v1/image/assets/TEMP/2f74a7b374d94e89d563d84ba3c9febd0fc2b66c?width=116',
+    id: "3",
+    name: "Jennifer Parker",
+    phone: "+1 555-0125",
+    avatar:
+      "https://api.builder.io/api/v1/image/assets/TEMP/2f74a7b374d94e89d563d84ba3c9febd0fc2b66c?width=116",
     isOnWhatsApp: true,
-    lastSeen: 'online',
-    about: 'Living life one day at a time',
+    lastSeen: "online",
+    about: "Living life one day at a time",
   },
   {
-    id: '4',
-    name: 'Biff Tannen',
-    phone: '+1 555-0126',
-    avatar: 'https://api.builder.io/api/v1/image/assets/TEMP/biff-avatar?width=116',
+    id: "4",
+    name: "Biff Tannen",
+    phone: "+1 555-0126",
+    avatar:
+      "https://api.builder.io/api/v1/image/assets/TEMP/biff-avatar?width=116",
     isOnWhatsApp: true,
-    lastSeen: 'last seen yesterday at 11:45 AM',
-    about: 'Make like a tree and get out of here!',
+    lastSeen: "last seen yesterday at 11:45 AM",
+    about: "Make like a tree and get out of here!",
   },
   {
-    id: '5',
-    name: 'George McFly',
-    phone: '+1 555-0127',
-    avatar: 'https://api.builder.io/api/v1/image/assets/TEMP/george-avatar?width=116',
+    id: "5",
+    name: "George McFly",
+    phone: "+1 555-0127",
+    avatar:
+      "https://api.builder.io/api/v1/image/assets/TEMP/george-avatar?width=116",
     isOnWhatsApp: true,
-    lastSeen: 'last seen today at 10:15 AM',
-    about: 'Writer and dreamer',
+    lastSeen: "last seen today at 10:15 AM",
+    about: "Writer and dreamer",
   },
   {
-    id: '6',
-    name: 'Lorraine Baines',
-    phone: '+1 555-0128',
-    avatar: 'https://api.builder.io/api/v1/image/assets/TEMP/lorraine-avatar?width=116',
+    id: "6",
+    name: "Lorraine Baines",
+    phone: "+1 555-0128",
+    avatar:
+      "https://api.builder.io/api/v1/image/assets/TEMP/lorraine-avatar?width=116",
     isOnWhatsApp: true,
-    lastSeen: 'online',
-    about: 'Happy to be living in Hill Valley',
+    lastSeen: "online",
+    about: "Happy to be living in Hill Valley",
   },
   {
-    id: '7',
-    name: 'Strickland',
-    phone: '+1 555-0129',
-    avatar: 'https://api.builder.io/api/v1/image/assets/TEMP/strickland-avatar?width=116',
+    id: "7",
+    name: "Strickland",
+    phone: "+1 555-0129",
+    avatar:
+      "https://api.builder.io/api/v1/image/assets/TEMP/strickland-avatar?width=116",
     isOnWhatsApp: true,
-    lastSeen: 'last seen 3 days ago',
-    about: 'Discipline! That\'s what this school needs!',
+    lastSeen: "last seen 3 days ago",
+    about: "Discipline! That's what this school needs!",
   },
   {
-    id: '8',
-    name: 'Goldie Wilson',
-    phone: '+1 555-0130',
-    avatar: 'https://api.builder.io/api/v1/image/assets/TEMP/goldie-avatar?width=116',
+    id: "8",
+    name: "Goldie Wilson",
+    phone: "+1 555-0130",
+    avatar:
+      "https://api.builder.io/api/v1/image/assets/TEMP/goldie-avatar?width=116",
     isOnWhatsApp: false,
   },
 ];
 
 export default function NewChat() {
   const navigate = useNavigate();
-  const [searchQuery, setSearchQuery] = useState('');
+  const [searchQuery, setSearchQuery] = useState("");
 
-  const filteredContacts = mockContacts.filter(contact =>
-    contact.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    contact.phone.includes(searchQuery)
+  const filteredContacts = mockContacts.filter(
+    (contact) =>
+      contact.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      contact.phone.includes(searchQuery),
   );
 
-  const whatsappContacts = filteredContacts.filter(contact => contact.isOnWhatsApp);
-  const nonWhatsappContacts = filteredContacts.filter(contact => !contact.isOnWhatsApp);
+  const whatsappContacts = filteredContacts.filter(
+    (contact) => contact.isOnWhatsApp,
+  );
+  const nonWhatsappContacts = filteredContacts.filter(
+    (contact) => !contact.isOnWhatsApp,
+  );
 
   const startChat = (contactId: string) => {
     navigate(`/chat/${contactId}`);
   };
 
-  const ContactItem: React.FC<{ contact: Contact; showInvite?: boolean }> = ({ contact, showInvite = false }) => (
+  const ContactItem: React.FC<{ contact: Contact; showInvite?: boolean }> = ({
+    contact,
+    showInvite = false,
+  }) => (
     <div
       onClick={() => !showInvite && startChat(contact.id)}
-      className={`flex items-center gap-3 px-4 py-3 ${!showInvite ? 'hover:bg-gray-50 active:bg-gray-100 cursor-pointer' : ''} transition-colors`}
+      className={`flex items-center gap-3 px-4 py-3 ${!showInvite ? "hover:bg-gray-50 active:bg-gray-100 cursor-pointer" : ""} transition-colors`}
     >
       <div className="relative">
         <div className="w-[52px] h-[52px] rounded-full overflow-hidden bg-gray-300">
@@ -113,11 +129,12 @@ export default function NewChat() {
             alt={contact.name}
             className="w-full h-full object-cover"
             onError={(e) => {
-              e.currentTarget.src = 'https://api.builder.io/api/v1/image/assets/placeholder-avatar';
+              e.currentTarget.src =
+                "https://api.builder.io/api/v1/image/assets/placeholder-avatar";
             }}
           />
         </div>
-        {contact.lastSeen === 'online' && !showInvite && (
+        {contact.lastSeen === "online" && !showInvite && (
           <div className="absolute bottom-0 right-0 w-4 h-4 bg-[#1DAB61] border-2 border-white rounded-full"></div>
         )}
       </div>
@@ -133,10 +150,10 @@ export default function NewChat() {
             </button>
           )}
         </div>
-        
+
         <div className="flex flex-col">
           <p className="text-[15px] text-[#667781] truncate">
-            {showInvite ? 'Not on WhatsApp' : (contact.about || contact.phone)}
+            {showInvite ? "Not on WhatsApp" : contact.about || contact.phone}
           </p>
           {!showInvite && contact.lastSeen && (
             <p className="text-[13px] text-[#667781] truncate">
@@ -154,7 +171,7 @@ export default function NewChat() {
 
       {/* Header */}
       <div className="flex items-center gap-4 px-4 py-3 bg-white border-b border-gray-100">
-        <button 
+        <button
           onClick={() => navigate(-1)}
           className="p-2 rounded-full hover:bg-gray-100 transition-colors"
         >
@@ -174,14 +191,19 @@ export default function NewChat() {
       {/* Search Bar */}
       <div className="px-4 py-3 bg-white border-b border-gray-100">
         <div className="relative">
-          <svg 
-            width="16" 
-            height="16" 
-            viewBox="0 0 24 24" 
+          <svg
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
             className="absolute left-3 top-1/2 transform -translate-y-1/2 fill-[#667781]"
           >
-            <path d="M11 19C15.4183 19 19 15.4183 19 11C19 6.58172 15.4183 3 11 3C6.58172 3 3 6.58172 3 11C3 15.4183 6.58172 19 11 19Z" stroke="#667781" strokeWidth="2" fill="none"/>
-            <path d="M21 21L16.65 16.65" stroke="#667781" strokeWidth="2"/>
+            <path
+              d="M11 19C15.4183 19 19 15.4183 19 11C19 6.58172 15.4183 3 11 3C6.58172 3 3 6.58172 3 11C3 15.4183 6.58172 19 11 19Z"
+              stroke="#667781"
+              strokeWidth="2"
+              fill="none"
+            />
+            <path d="M21 21L16.65 16.65" stroke="#667781" strokeWidth="2" />
           </svg>
           <input
             type="text"
@@ -208,9 +230,21 @@ export default function NewChat() {
                 strokeLinecap="round"
                 strokeLinejoin="round"
               />
-              <circle cx="9" cy="7" r="4" stroke="white" strokeWidth="2"/>
-              <path d="M23 11L20 8L17 11" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-              <path d="M20 8V16" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+              <circle cx="9" cy="7" r="4" stroke="white" strokeWidth="2" />
+              <path
+                d="M23 11L20 8L17 11"
+                stroke="white"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+              <path
+                d="M20 8V16"
+                stroke="white"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
             </svg>
           </div>
           <div>
@@ -235,7 +269,9 @@ export default function NewChat() {
             </svg>
           </div>
           <div>
-            <h3 className="font-semibold text-[17px] text-black">New Contact</h3>
+            <h3 className="font-semibold text-[17px] text-black">
+              New Contact
+            </h3>
             <p className="text-[15px] text-[#667781]">Add a new contact</p>
           </div>
         </Link>
@@ -253,11 +289,13 @@ export default function NewChat() {
                 strokeLinecap="round"
                 strokeLinejoin="round"
               />
-              <circle cx="12" cy="7" r="4" stroke="white" strokeWidth="2"/>
+              <circle cx="12" cy="7" r="4" stroke="white" strokeWidth="2" />
             </svg>
           </div>
           <div>
-            <h3 className="font-semibold text-[17px] text-black">View Contacts</h3>
+            <h3 className="font-semibold text-[17px] text-black">
+              View Contacts
+            </h3>
             <p className="text-[15px] text-[#667781]">Browse all contacts</p>
           </div>
         </Link>
@@ -272,7 +310,7 @@ export default function NewChat() {
                 Contacts on WhatsApp
               </span>
             </div>
-            {whatsappContacts.map(contact => (
+            {whatsappContacts.map((contact) => (
               <ContactItem key={contact.id} contact={contact} />
             ))}
           </div>
@@ -285,7 +323,7 @@ export default function NewChat() {
                 Invite to WhatsApp
               </span>
             </div>
-            {nonWhatsappContacts.map(contact => (
+            {nonWhatsappContacts.map((contact) => (
               <ContactItem key={contact.id} contact={contact} showInvite />
             ))}
           </div>
@@ -302,7 +340,7 @@ export default function NewChat() {
                   strokeLinecap="round"
                   strokeLinejoin="round"
                 />
-                <circle cx="12" cy="7" r="4" stroke="#667781" strokeWidth="2"/>
+                <circle cx="12" cy="7" r="4" stroke="#667781" strokeWidth="2" />
               </svg>
             </div>
             <h3 className="text-[20px] font-medium text-[#667781] mb-2">

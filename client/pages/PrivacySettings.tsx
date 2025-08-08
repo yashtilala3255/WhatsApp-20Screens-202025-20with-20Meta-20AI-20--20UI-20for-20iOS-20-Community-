@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import StatusBar from '../components/StatusBar';
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import StatusBar from "../components/StatusBar";
 
 interface PrivacySetting {
   id: string;
@@ -12,46 +12,51 @@ interface PrivacySetting {
 
 const privacySettings: PrivacySetting[] = [
   {
-    id: 'last_seen',
-    title: 'Last Seen',
-    description: 'Who can see when you were last online',
-    options: ['Everyone', 'My Contacts', 'Nobody'],
-    currentValue: 'My Contacts',
+    id: "last_seen",
+    title: "Last Seen",
+    description: "Who can see when you were last online",
+    options: ["Everyone", "My Contacts", "Nobody"],
+    currentValue: "My Contacts",
   },
   {
-    id: 'profile_photo',
-    title: 'Profile Photo',
-    description: 'Who can see your profile photo',
-    options: ['Everyone', 'My Contacts', 'Nobody'],
-    currentValue: 'Everyone',
+    id: "profile_photo",
+    title: "Profile Photo",
+    description: "Who can see your profile photo",
+    options: ["Everyone", "My Contacts", "Nobody"],
+    currentValue: "Everyone",
   },
   {
-    id: 'about',
-    title: 'About',
-    description: 'Who can see your about info',
-    options: ['Everyone', 'My Contacts', 'Nobody'],
-    currentValue: 'My Contacts',
+    id: "about",
+    title: "About",
+    description: "Who can see your about info",
+    options: ["Everyone", "My Contacts", "Nobody"],
+    currentValue: "My Contacts",
   },
   {
-    id: 'status',
-    title: 'Status',
-    description: 'Who can see your status updates',
-    options: ['Everyone', 'My Contacts', 'My Contacts Except...', 'Only Share With...'],
-    currentValue: 'My Contacts',
+    id: "status",
+    title: "Status",
+    description: "Who can see your status updates",
+    options: [
+      "Everyone",
+      "My Contacts",
+      "My Contacts Except...",
+      "Only Share With...",
+    ],
+    currentValue: "My Contacts",
   },
   {
-    id: 'read_receipts',
-    title: 'Read Receipts',
-    description: 'If turned off, you won\'t send or receive read receipts',
-    options: ['On', 'Off'],
-    currentValue: 'On',
+    id: "read_receipts",
+    title: "Read Receipts",
+    description: "If turned off, you won't send or receive read receipts",
+    options: ["On", "Off"],
+    currentValue: "On",
   },
   {
-    id: 'groups',
-    title: 'Groups',
-    description: 'Who can add you to groups',
-    options: ['Everyone', 'My Contacts', 'My Contacts Except...'],
-    currentValue: 'My Contacts',
+    id: "groups",
+    title: "Groups",
+    description: "Who can add you to groups",
+    options: ["Everyone", "My Contacts", "My Contacts Except..."],
+    currentValue: "My Contacts",
   },
 ];
 
@@ -61,19 +66,19 @@ export default function PrivacySettings() {
   const [selectedSetting, setSelectedSetting] = useState<string | null>(null);
 
   const updateSetting = (settingId: string, newValue: string) => {
-    setSettings(prev =>
-      prev.map(setting =>
+    setSettings((prev) =>
+      prev.map((setting) =>
         setting.id === settingId
           ? { ...setting, currentValue: newValue }
-          : setting
-      )
+          : setting,
+      ),
     );
     setSelectedSetting(null);
   };
 
-  const PrivacyOption: React.FC<{ 
-    setting: PrivacySetting; 
-    isExpanded: boolean; 
+  const PrivacyOption: React.FC<{
+    setting: PrivacySetting;
+    isExpanded: boolean;
     onToggle: () => void;
   }> = ({ setting, isExpanded, onToggle }) => (
     <div className="bg-white">
@@ -85,19 +90,17 @@ export default function PrivacySettings() {
           <h3 className="text-[17px] font-medium text-black mb-1">
             {setting.title}
           </h3>
-          <p className="text-[14px] text-[#667781]">
-            {setting.description}
-          </p>
+          <p className="text-[14px] text-[#667781]">{setting.description}</p>
         </div>
         <div className="flex items-center gap-2">
           <span className="text-[16px] text-[#667781]">
             {setting.currentValue}
           </span>
-          <svg 
-            width="8" 
-            height="14" 
-            viewBox="0 0 8 14" 
-            className={`transform transition-transform ${isExpanded ? 'rotate-90' : ''}`}
+          <svg
+            width="8"
+            height="14"
+            viewBox="0 0 8 14"
+            className={`transform transition-transform ${isExpanded ? "rotate-90" : ""}`}
           >
             <path
               d="M1 13L7 7L1 1"
@@ -143,7 +146,7 @@ export default function PrivacySettings() {
 
       {/* Header */}
       <div className="flex items-center gap-4 px-4 py-3 bg-[#1DAB61]">
-        <button 
+        <button
           onClick={() => navigate(-1)}
           className="p-2 rounded-full hover:bg-white/10 transition-colors"
         >
@@ -165,7 +168,13 @@ export default function PrivacySettings() {
         {/* Privacy Notice */}
         <div className="bg-[#E3F2FD] px-4 py-4 mx-4 mt-4 rounded-lg">
           <div className="flex items-start gap-3">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" className="flex-shrink-0 mt-1">
+            <svg
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              className="flex-shrink-0 mt-1"
+            >
               <path
                 d="M12 22S8 18 8 13V6L12 4L16 6V13C16 18 12 22 12 22Z"
                 stroke="#1976D2"
@@ -179,7 +188,8 @@ export default function PrivacySettings() {
                 Your Privacy Matters
               </h3>
               <p className="text-[14px] text-[#1976D2] leading-relaxed">
-                WhatsApp protects your privacy with end-to-end encryption. Control who can see your information and activity.
+                WhatsApp protects your privacy with end-to-end encryption.
+                Control who can see your information and activity.
               </p>
             </div>
           </div>
@@ -193,14 +203,16 @@ export default function PrivacySettings() {
             </span>
           </div>
 
-          {settings.slice(0, 3).map(setting => (
+          {settings.slice(0, 3).map((setting) => (
             <PrivacyOption
               key={setting.id}
               setting={setting}
               isExpanded={selectedSetting === setting.id}
-              onToggle={() => setSelectedSetting(
-                selectedSetting === setting.id ? null : setting.id
-              )}
+              onToggle={() =>
+                setSelectedSetting(
+                  selectedSetting === setting.id ? null : setting.id,
+                )
+              }
             />
           ))}
 
@@ -210,14 +222,16 @@ export default function PrivacySettings() {
             </span>
           </div>
 
-          {settings.slice(3).map(setting => (
+          {settings.slice(3).map((setting) => (
             <PrivacyOption
               key={setting.id}
               setting={setting}
               isExpanded={selectedSetting === setting.id}
-              onToggle={() => setSelectedSetting(
-                selectedSetting === setting.id ? null : setting.id
-              )}
+              onToggle={() =>
+                setSelectedSetting(
+                  selectedSetting === setting.id ? null : setting.id,
+                )
+              }
             />
           ))}
 
@@ -230,20 +244,34 @@ export default function PrivacySettings() {
             </div>
 
             <div className="bg-white">
-              <button 
-                onClick={() => navigate('/blocked-contacts')}
+              <button
+                onClick={() => navigate("/blocked-contacts")}
                 className="w-full flex items-center justify-between px-4 py-4 hover:bg-gray-50 transition-colors"
               >
                 <div className="flex items-center gap-3">
                   <div className="w-8 h-8 bg-[#F44336] rounded-full flex items-center justify-center">
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-                      <circle cx="12" cy="12" r="10" stroke="white" strokeWidth="2"/>
-                      <path d="M4.93 4.93L19.07 19.07" stroke="white" strokeWidth="2"/>
+                      <circle
+                        cx="12"
+                        cy="12"
+                        r="10"
+                        stroke="white"
+                        strokeWidth="2"
+                      />
+                      <path
+                        d="M4.93 4.93L19.07 19.07"
+                        stroke="white"
+                        strokeWidth="2"
+                      />
                     </svg>
                   </div>
                   <div className="text-left">
-                    <h3 className="text-[17px] font-medium text-black">Blocked Contacts</h3>
-                    <p className="text-[14px] text-[#667781]">3 contacts blocked</p>
+                    <h3 className="text-[17px] font-medium text-black">
+                      Blocked Contacts
+                    </h3>
+                    <p className="text-[14px] text-[#667781]">
+                      3 contacts blocked
+                    </p>
                   </div>
                 </div>
                 <svg width="8" height="14" viewBox="0 0 8 14" fill="none">
@@ -257,20 +285,34 @@ export default function PrivacySettings() {
                 </svg>
               </button>
 
-              <button 
-                onClick={() => navigate('/disappearing-messages')}
+              <button
+                onClick={() => navigate("/disappearing-messages")}
                 className="w-full flex items-center justify-between px-4 py-4 hover:bg-gray-50 transition-colors"
               >
                 <div className="flex items-center gap-3">
                   <div className="w-8 h-8 bg-[#FF9800] rounded-full flex items-center justify-center">
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-                      <circle cx="12" cy="12" r="10" stroke="white" strokeWidth="2"/>
-                      <polyline points="12,6 12,12 16,14" stroke="white" strokeWidth="2"/>
+                      <circle
+                        cx="12"
+                        cy="12"
+                        r="10"
+                        stroke="white"
+                        strokeWidth="2"
+                      />
+                      <polyline
+                        points="12,6 12,12 16,14"
+                        stroke="white"
+                        strokeWidth="2"
+                      />
                     </svg>
                   </div>
                   <div className="text-left">
-                    <h3 className="text-[17px] font-medium text-black">Disappearing Messages</h3>
-                    <p className="text-[14px] text-[#667781]">Default timer for new chats</p>
+                    <h3 className="text-[17px] font-medium text-black">
+                      Disappearing Messages
+                    </h3>
+                    <p className="text-[14px] text-[#667781]">
+                      Default timer for new chats
+                    </p>
                   </div>
                 </div>
                 <div className="flex items-center gap-2">
@@ -287,20 +329,34 @@ export default function PrivacySettings() {
                 </div>
               </button>
 
-              <button 
-                onClick={() => navigate('/live-location')}
+              <button
+                onClick={() => navigate("/live-location")}
                 className="w-full flex items-center justify-between px-4 py-4 hover:bg-gray-50 transition-colors"
               >
                 <div className="flex items-center gap-3">
                   <div className="w-8 h-8 bg-[#2196F3] rounded-full flex items-center justify-center">
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-                      <path d="M21 10C21 17 12 23 12 23S3 17 3 10C3 5.02944 7.02944 1 12 1C16.9706 1 21 5.02944 21 10Z" stroke="white" strokeWidth="2"/>
-                      <circle cx="12" cy="10" r="3" stroke="white" strokeWidth="2"/>
+                      <path
+                        d="M21 10C21 17 12 23 12 23S3 17 3 10C3 5.02944 7.02944 1 12 1C16.9706 1 21 5.02944 21 10Z"
+                        stroke="white"
+                        strokeWidth="2"
+                      />
+                      <circle
+                        cx="12"
+                        cy="10"
+                        r="3"
+                        stroke="white"
+                        strokeWidth="2"
+                      />
                     </svg>
                   </div>
                   <div className="text-left">
-                    <h3 className="text-[17px] font-medium text-black">Live Location</h3>
-                    <p className="text-[14px] text-[#667781]">Stop sharing with 2 chats</p>
+                    <h3 className="text-[17px] font-medium text-black">
+                      Live Location
+                    </h3>
+                    <p className="text-[14px] text-[#667781]">
+                      Stop sharing with 2 chats
+                    </p>
                   </div>
                 </div>
                 <svg width="8" height="14" viewBox="0 0 8 14" fill="none">
@@ -319,7 +375,7 @@ export default function PrivacySettings() {
           {/* Privacy Info */}
           <div className="px-4 py-6">
             <p className="text-[14px] text-[#667781] leading-relaxed text-center">
-              Your messages are secured with end-to-end encryption. 
+              Your messages are secured with end-to-end encryption.
               <span className="text-[#1DAB61] underline"> Learn more</span>
             </p>
           </div>

@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import StatusBar from '../components/StatusBar';
-import TabBar from '../components/TabBar';
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import StatusBar from "../components/StatusBar";
+import TabBar from "../components/TabBar";
 
 interface ChatItem {
   id: string;
@@ -19,83 +19,92 @@ interface ChatItem {
 
 const mockChats: ChatItem[] = [
   {
-    id: '1',
-    name: 'Marty McFly',
-    lastMessage: 'Great Scott! We need to get back to 1985!',
-    time: '2:30 PM',
-    avatar: 'https://api.builder.io/api/v1/image/assets/TEMP/7a8c2c85?width=116',
+    id: "1",
+    name: "Marty McFly",
+    lastMessage: "Great Scott! We need to get back to 1985!",
+    time: "2:30 PM",
+    avatar:
+      "https://api.builder.io/api/v1/image/assets/TEMP/7a8c2c85?width=116",
     unreadCount: 3,
     isOnline: true,
     isPinned: true,
   },
   {
-    id: '2',
-    name: 'Doc Brown',
-    lastMessage: 'The DeLorean is ready for another time jump',
-    time: '1:45 PM',
-    avatar: 'https://api.builder.io/api/v1/image/assets/TEMP/4c4a5af127d840b7402719dbbfdd77f20d2b99a7?width=116',
+    id: "2",
+    name: "Doc Brown",
+    lastMessage: "The DeLorean is ready for another time jump",
+    time: "1:45 PM",
+    avatar:
+      "https://api.builder.io/api/v1/image/assets/TEMP/4c4a5af127d840b7402719dbbfdd77f20d2b99a7?width=116",
     unreadCount: 1,
     isPinned: true,
   },
   {
-    id: '3',
-    name: 'Jennifer Parker',
-    lastMessage: 'Are we still on for tonight?',
-    time: '12:20 PM',
-    avatar: 'https://api.builder.io/api/v1/image/assets/TEMP/2f74a7b374d94e89d563d84ba3c9febd0fc2b66c?width=116',
+    id: "3",
+    name: "Jennifer Parker",
+    lastMessage: "Are we still on for tonight?",
+    time: "12:20 PM",
+    avatar:
+      "https://api.builder.io/api/v1/image/assets/TEMP/2f74a7b374d94e89d563d84ba3c9febd0fc2b66c?width=116",
     isOnline: true,
   },
   {
-    id: '4',
-    name: 'Biff Tannen',
-    lastMessage: 'Hey McFly! I thought I told you never to come in here.',
-    time: '11:30 AM',
-    avatar: 'https://api.builder.io/api/v1/image/assets/TEMP/biff-avatar?width=116',
+    id: "4",
+    name: "Biff Tannen",
+    lastMessage: "Hey McFly! I thought I told you never to come in here.",
+    time: "11:30 AM",
+    avatar:
+      "https://api.builder.io/api/v1/image/assets/TEMP/biff-avatar?width=116",
   },
   {
-    id: '5',
-    name: 'George McFly',
-    lastMessage: 'I finished writing my novel!',
-    time: '10:15 AM',
-    avatar: 'https://api.builder.io/api/v1/image/assets/TEMP/george-avatar?width=116',
+    id: "5",
+    name: "George McFly",
+    lastMessage: "I finished writing my novel!",
+    time: "10:15 AM",
+    avatar:
+      "https://api.builder.io/api/v1/image/assets/TEMP/george-avatar?width=116",
     unreadCount: 2,
   },
   {
-    id: '6',
-    name: 'Lorraine Baines',
-    lastMessage: 'Calvin Klein, such a nice name',
-    time: 'Yesterday',
-    avatar: 'https://api.builder.io/api/v1/image/assets/TEMP/lorraine-avatar?width=116',
+    id: "6",
+    name: "Lorraine Baines",
+    lastMessage: "Calvin Klein, such a nice name",
+    time: "Yesterday",
+    avatar:
+      "https://api.builder.io/api/v1/image/assets/TEMP/lorraine-avatar?width=116",
     isTyping: true,
   },
   {
-    id: '7',
-    name: 'Einstein (Dog)',
-    lastMessage: 'Woof! 🐕',
-    time: 'Yesterday',
-    avatar: 'https://api.builder.io/api/v1/image/assets/TEMP/einstein-avatar?width=116',
+    id: "7",
+    name: "Einstein (Dog)",
+    lastMessage: "Woof! 🐕",
+    time: "Yesterday",
+    avatar:
+      "https://api.builder.io/api/v1/image/assets/TEMP/einstein-avatar?width=116",
   },
   {
-    id: '8',
-    name: 'Hill Valley High School',
-    lastMessage: 'Welcome to the class of 1985!',
-    time: 'Monday',
-    avatar: 'https://api.builder.io/api/v1/image/assets/TEMP/school-avatar?width=116',
+    id: "8",
+    name: "Hill Valley High School",
+    lastMessage: "Welcome to the class of 1985!",
+    time: "Monday",
+    avatar:
+      "https://api.builder.io/api/v1/image/assets/TEMP/school-avatar?width=116",
     isMuted: true,
   },
 ];
 
 export default function Chats() {
-  const [searchQuery, setSearchQuery] = useState('');
+  const [searchQuery, setSearchQuery] = useState("");
   const [showSearch, setShowSearch] = useState(false);
 
-  const filteredChats = mockChats.filter(chat =>
-    chat.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    chat.lastMessage.toLowerCase().includes(searchQuery.toLowerCase())
+  const filteredChats = mockChats.filter(
+    (chat) =>
+      chat.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      chat.lastMessage.toLowerCase().includes(searchQuery.toLowerCase()),
   );
 
-  const pinnedChats = filteredChats.filter(chat => chat.isPinned);
-  const regularChats = filteredChats.filter(chat => !chat.isPinned);
+  const pinnedChats = filteredChats.filter((chat) => chat.isPinned);
+  const regularChats = filteredChats.filter((chat) => !chat.isPinned);
 
   const ChatItem: React.FC<{ chat: ChatItem }> = ({ chat }) => (
     <Link
@@ -109,7 +118,8 @@ export default function Chats() {
             alt={chat.name}
             className="w-full h-full object-cover"
             onError={(e) => {
-              e.currentTarget.src = 'https://api.builder.io/api/v1/image/assets/placeholder-avatar';
+              e.currentTarget.src =
+                "https://api.builder.io/api/v1/image/assets/placeholder-avatar";
             }}
           />
         </div>
@@ -125,15 +135,25 @@ export default function Chats() {
               {chat.name}
             </h3>
             {chat.isPinned && (
-              <svg width="12" height="12" viewBox="0 0 12 12" className="fill-[#667781] flex-shrink-0">
-                <path d="M6.5 0L8.5 4H12L9 6.5L10.5 12L6.5 9L2.5 12L4 6.5L1 4H4.5L6.5 0Z"/>
+              <svg
+                width="12"
+                height="12"
+                viewBox="0 0 12 12"
+                className="fill-[#667781] flex-shrink-0"
+              >
+                <path d="M6.5 0L8.5 4H12L9 6.5L10.5 12L6.5 9L2.5 12L4 6.5L1 4H4.5L6.5 0Z" />
               </svg>
             )}
             {chat.isMuted && (
-              <svg width="16" height="16" viewBox="0 0 16 16" className="fill-[#667781] flex-shrink-0">
-                <path d="M8 2.5c-.83 0-1.5.67-1.5 1.5v4c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5V4c0-.83-.67-1.5-1.5-1.5z"/>
-                <path d="M3 6v2c0 2.76 2.24 5 5 5s5-2.24 5-5V6h-1v2c0 2.21-1.79 4-4 4s-4-1.79-4-4V6H3z"/>
-                <path d="M1 1l14 14" stroke="#667781" strokeWidth="1.5"/>
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 16 16"
+                className="fill-[#667781] flex-shrink-0"
+              >
+                <path d="M8 2.5c-.83 0-1.5.67-1.5 1.5v4c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5V4c0-.83-.67-1.5-1.5-1.5z" />
+                <path d="M3 6v2c0 2.76 2.24 5 5 5s5-2.24 5-5V6h-1v2c0 2.21-1.79 4-4 4s-4-1.79-4-4V6H3z" />
+                <path d="M1 1l14 14" stroke="#667781" strokeWidth="1.5" />
               </svg>
             )}
           </div>
@@ -141,7 +161,7 @@ export default function Chats() {
             {chat.time}
           </span>
         </div>
-        
+
         <div className="flex items-center justify-between">
           <p className="text-[15px] text-[#667781] truncate flex-1">
             {chat.isTyping ? (
@@ -150,10 +170,10 @@ export default function Chats() {
               chat.lastMessage
             )}
           </p>
-          
+
           {chat.unreadCount && (
             <div className="ml-2 bg-[#1DAB61] text-white text-[12px] font-medium px-2 py-1 rounded-full min-w-[20px] flex items-center justify-center">
-              {chat.unreadCount > 99 ? '99+' : chat.unreadCount}
+              {chat.unreadCount > 99 ? "99+" : chat.unreadCount}
             </div>
           )}
         </div>
@@ -169,7 +189,7 @@ export default function Chats() {
       <div className="flex items-center justify-between px-4 py-3 bg-white border-b border-gray-100">
         <div className="flex items-center gap-4">
           <h1 className="text-[28px] font-bold text-black">Chats</h1>
-          <button 
+          <button
             onClick={() => setShowSearch(!showSearch)}
             className="p-2 rounded-full hover:bg-gray-100 transition-colors"
           >
@@ -205,16 +225,10 @@ export default function Chats() {
                 strokeLinecap="round"
                 strokeLinejoin="round"
               />
-              <circle
-                cx="12"
-                cy="13"
-                r="4"
-                stroke="#667781"
-                strokeWidth="2"
-              />
+              <circle cx="12" cy="13" r="4" stroke="#667781" strokeWidth="2" />
             </svg>
           </Link>
-          
+
           <Link
             to="/new-chat"
             className="p-2 rounded-full hover:bg-gray-100 transition-colors"
@@ -232,9 +246,9 @@ export default function Chats() {
 
           <button className="p-2 rounded-full hover:bg-gray-100 transition-colors">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-              <circle cx="12" cy="5" r="1" fill="#667781"/>
-              <circle cx="12" cy="12" r="1" fill="#667781"/>
-              <circle cx="12" cy="19" r="1" fill="#667781"/>
+              <circle cx="12" cy="5" r="1" fill="#667781" />
+              <circle cx="12" cy="12" r="1" fill="#667781" />
+              <circle cx="12" cy="19" r="1" fill="#667781" />
             </svg>
           </button>
         </div>
@@ -244,14 +258,19 @@ export default function Chats() {
       {showSearch && (
         <div className="px-4 py-3 bg-white border-b border-gray-100">
           <div className="relative">
-            <svg 
-              width="16" 
-              height="16" 
-              viewBox="0 0 24 24" 
+            <svg
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
               className="absolute left-3 top-1/2 transform -translate-y-1/2 fill-[#667781]"
             >
-              <path d="M11 19C15.4183 19 19 15.4183 19 11C19 6.58172 15.4183 3 11 3C6.58172 3 3 6.58172 3 11C3 15.4183 6.58172 19 11 19Z" stroke="#667781" strokeWidth="2" fill="none"/>
-              <path d="M21 21L16.65 16.65" stroke="#667781" strokeWidth="2"/>
+              <path
+                d="M11 19C15.4183 19 19 15.4183 19 11C19 6.58172 15.4183 3 11 3C6.58172 3 3 6.58172 3 11C3 15.4183 6.58172 19 11 19Z"
+                stroke="#667781"
+                strokeWidth="2"
+                fill="none"
+              />
+              <path d="M21 21L16.65 16.65" stroke="#667781" strokeWidth="2" />
             </svg>
             <input
               type="text"
@@ -273,7 +292,7 @@ export default function Chats() {
                 Pinned
               </span>
             </div>
-            {pinnedChats.map(chat => (
+            {pinnedChats.map((chat) => (
               <ChatItem key={chat.id} chat={chat} />
             ))}
           </div>
@@ -288,7 +307,7 @@ export default function Chats() {
                 </span>
               </div>
             )}
-            {regularChats.map(chat => (
+            {regularChats.map((chat) => (
               <ChatItem key={chat.id} chat={chat} />
             ))}
           </div>
@@ -311,7 +330,9 @@ export default function Chats() {
               No chats found
             </h3>
             <p className="text-[16px] text-[#667781] text-center leading-relaxed">
-              {searchQuery ? "Try searching for something else" : "Start a conversation by tapping the + button"}
+              {searchQuery
+                ? "Try searching for something else"
+                : "Start a conversation by tapping the + button"}
             </p>
           </div>
         )}
