@@ -45,6 +45,8 @@ const SettingsRow: React.FC<{
 );
 
 export default function Settings() {
+  const navigate = useNavigate();
+
   return (
     <div className="flex flex-col w-full max-w-[393px] min-h-screen bg-[#F4F4F4] mx-auto relative">
       {/* Status Bar */}
