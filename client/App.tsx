@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Updates from "./pages/Updates";
 import Calls from "./pages/Calls";
 import Communities from "./pages/Communities";
+import Chat from "./pages/Chat";
 import StatusDetail from "./pages/StatusDetail";
 import StatusReaction from "./pages/StatusReaction";
 import NotFound from "./pages/NotFound";
@@ -15,6 +16,7 @@ function App() {
             <Route path="/" element={<Updates />} />
             <Route path="/calls" element={<Calls />} />
             <Route path="/communities" element={<Communities />} />
+            <Route path="/chat/:id" element={<Chat />} />
             <Route path="/status/:id" element={<StatusDetail />} />
             <Route path="/status/:id/react" element={<StatusReaction />} />
             <Route path="*" element={<NotFound />} />
