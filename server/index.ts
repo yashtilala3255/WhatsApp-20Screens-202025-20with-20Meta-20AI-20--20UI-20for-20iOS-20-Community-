@@ -11,15 +11,15 @@ export function createServer() {
 
   // Middleware
   app.use(cors());
-  app.use(express.json({ limit: '10mb' }));
-  app.use(express.urlencoded({ extended: true, limit: '10mb' }));
+  app.use(express.json({ limit: "10mb" }));
+  app.use(express.urlencoded({ extended: true, limit: "10mb" }));
 
   // Health check endpoint
   app.get("/api/health", (_req, res) => {
     res.json({
       message: "WhatsApp Clone API is running!",
       timestamp: new Date().toISOString(),
-      version: "1.0.0"
+      version: "1.0.0",
     });
   });
 
@@ -36,13 +36,23 @@ export function createServer() {
   app.get("/api/demo", handleDemo);
 
   // Error handling middleware
-  app.use((err: any, req: express.Request, res: express.Response, next: express.NextFunction) => {
-    console.error('API Error:', err);
-    res.status(500).json({
-      error: 'Internal server error',
-      message: process.env.NODE_ENV === 'development' ? err.message : 'Something went wrong'
-    });
-  });
+  app.use(
+    (
+      err: any,
+      req: express.Request,
+      res: express.Response,
+      next: express.NextFunction,
+    ) => {
+      console.error("API Error:", err);
+      res.status(500).json({
+        error: "Internal server error",
+        message:
+          process.env.NODE_ENV === "development"
+            ? err.message
+            : "Something went wrong",
+      });
+    },
+  );
 
   return app;
 }
@@ -53,12 +63,12 @@ let dbInitialized = false;
 export async function initializeServerDatabase() {
   if (!dbInitialized) {
     try {
-      console.log('🗄️  Initializing WhatsApp Clone database...');
+      console.log("🗄️  Initializing WhatsApp Clone database...");
       await initializeDatabase();
-      console.log('✅ Database initialized successfully');
+      console.log("✅ Database initialized successfully");
       dbInitialized = true;
     } catch (error) {
-      console.error('❌ Failed to initialize database:', error);
+      console.error("❌ Failed to initialize database:", error);
       throw error;
     }
   }
@@ -67,7 +77,7 @@ export async function initializeServerDatabase() {
 // Graceful shutdown
 export async function shutdownServer() {
   if (dbInitialized) {
-    console.log('🛑 Shutting down database connection...');
+    console.log("🛑 Shutting down database connection...");
     await closeDatabase();
     dbInitialized = false;
   }

@@ -74,8 +74,12 @@ function App() {
         {/* Desktop: Show app info */}
         <div className="hidden lg:block fixed top-4 left-4 z-50">
           <div className="bg-white/90 backdrop-blur-sm rounded-lg p-3 shadow-lg">
-            <h1 className="text-sm font-semibold text-gray-900">WhatsApp Clone</h1>
-            <p className="text-xs text-gray-600">Built with React & TypeScript</p>
+            <h1 className="text-sm font-semibold text-gray-900">
+              WhatsApp Clone
+            </h1>
+            <p className="text-xs text-gray-600">
+              Built with React & TypeScript
+            </p>
           </div>
         </div>
       </div>

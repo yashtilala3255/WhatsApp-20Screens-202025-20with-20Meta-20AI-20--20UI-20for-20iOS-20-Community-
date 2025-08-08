@@ -1,4 +1,4 @@
-import { getDatabase } from '../database/db';
+import { getDatabase } from "../database/db";
 
 export interface User {
   id: number;
@@ -36,48 +36,60 @@ export class UserModel {
   // Create a new user
   static async create(userData: CreateUserData): Promise<User> {
     const db = await getDatabase();
-    
-    const result = await db.run(`
+
+    const result = await db.run(
+      `
       INSERT INTO users (phone_number, first_name, last_name, email, about, profile_image_url)
       VALUES (?, ?, ?, ?, ?, ?)
-    `, [
-      userData.phone_number,
-      userData.first_name,
-      userData.last_name,
-      userData.email || null,
-      userData.about || 'Hey there! I am using WhatsApp.',
-      userData.profile_image_url || null
-    ]);
+    `,
+      [
+        userData.phone_number,
+        userData.first_name,
+        userData.last_name,
+        userData.email || null,
+        userData.about || "Hey there! I am using WhatsApp.",
+        userData.profile_image_url || null,
+      ],
+    );
 
-    const user = await db.get('SELECT * FROM users WHERE id = ?', [result.lastID]);
+    const user = await db.get("SELECT * FROM users WHERE id = ?", [
+      result.lastID,
+    ]);
     return user as User;
   }
 
   // Get user by ID
   static async findById(id: number): Promise<User | null> {
     const db = await getDatabase();
-    const user = await db.get('SELECT * FROM users WHERE id = ?', [id]);
-    return user as User || null;
+    const user = await db.get("SELECT * FROM users WHERE id = ?", [id]);
+    return (user as User) || null;
   }
 
   // Get user by phone number
   static async findByPhoneNumber(phoneNumber: string): Promise<User | null> {
     const db = await getDatabase();
-    const user = await db.get('SELECT * FROM users WHERE phone_number = ?', [phoneNumber]);
-    return user as User || null;
+    const user = await db.get("SELECT * FROM users WHERE phone_number = ?", [
+      phoneNumber,
+    ]);
+    return (user as User) || null;
   }
 
   // Get all users
   static async findAll(): Promise<User[]> {
     const db = await getDatabase();
-    const users = await db.all('SELECT * FROM users ORDER BY first_name, last_name');
+    const users = await db.all(
+      "SELECT * FROM users ORDER BY first_name, last_name",
+    );
     return users as User[];
   }
 
   // Update user
-  static async update(id: number, userData: UpdateUserData): Promise<User | null> {
+  static async update(
+    id: number,
+    userData: UpdateUserData,
+  ): Promise<User | null> {
     const db = await getDatabase();
-    
+
     const updateFields: string[] = [];
     const values: any[] = [];
 
@@ -93,14 +105,17 @@ export class UserModel {
     }
 
     // Add updated_at
-    updateFields.push('updated_at = CURRENT_TIMESTAMP');
+    updateFields.push("updated_at = CURRENT_TIMESTAMP");
     values.push(id);
 
-    await db.run(`
+    await db.run(
+      `
       UPDATE users 
-      SET ${updateFields.join(', ')} 
+      SET ${updateFields.join(", ")} 
       WHERE id = ?
-    `, values);
+    `,
+      values,
+    );
 
     return await UserModel.findById(id);
   }
@@ -108,30 +123,39 @@ export class UserModel {
   // Delete user
   static async delete(id: number): Promise<boolean> {
     const db = await getDatabase();
-    const result = await db.run('DELETE FROM users WHERE id = ?', [id]);
+    const result = await db.run("DELETE FROM users WHERE id = ?", [id]);
     return (result.changes || 0) > 0;
   }
 
   // Update user online status
-  static async updateOnlineStatus(id: number, isOnline: boolean): Promise<void> {
+  static async updateOnlineStatus(
+    id: number,
+    isOnline: boolean,
+  ): Promise<void> {
     const db = await getDatabase();
-    await db.run(`
+    await db.run(
+      `
       UPDATE users 
       SET is_online = ?, last_seen = CURRENT_TIMESTAMP, updated_at = CURRENT_TIMESTAMP 
       WHERE id = ?
-    `, [isOnline, id]);
+    `,
+      [isOnline, id],
+    );
   }
 
   // Get user contacts
   static async getContacts(userId: number): Promise<User[]> {
     const db = await getDatabase();
-    const contacts = await db.all(`
+    const contacts = await db.all(
+      `
       SELECT u.*, c.display_name, c.is_favorite, c.is_blocked
       FROM users u
       JOIN contacts c ON u.id = c.contact_user_id
       WHERE c.user_id = ? AND c.is_blocked = FALSE
       ORDER BY u.first_name, u.last_name
-    `, [userId]);
+    `,
+      [userId],
+    );
     return contacts as User[];
   }
 
@@ -145,11 +169,11 @@ export class UserModel {
     const params = [`%${query}%`, `%${query}%`, `%${query}%`];
 
     if (excludeUserId) {
-      sql += ' AND id != ?';
+      sql += " AND id != ?";
       params.push(excludeUserId);
     }
 
-    sql += ' ORDER BY first_name, last_name LIMIT 50';
+    sql += " ORDER BY first_name, last_name LIMIT 50";
 
     const users = await db.all(sql, params);
     return users as User[];
@@ -158,26 +182,31 @@ export class UserModel {
   // Check if user exists
   static async exists(phoneNumber: string): Promise<boolean> {
     const db = await getDatabase();
-    const result = await db.get('SELECT 1 FROM users WHERE phone_number = ?', [phoneNumber]);
+    const result = await db.get("SELECT 1 FROM users WHERE phone_number = ?", [
+      phoneNumber,
+    ]);
     return !!result;
   }
 
   // Get user settings
   static async getSettings(userId: number): Promise<any> {
     const db = await getDatabase();
-    const settings = await db.get('SELECT * FROM user_settings WHERE user_id = ?', [userId]);
+    const settings = await db.get(
+      "SELECT * FROM user_settings WHERE user_id = ?",
+      [userId],
+    );
     return settings;
   }
 
   // Update user settings
   static async updateSettings(userId: number, settings: any): Promise<void> {
     const db = await getDatabase();
-    
+
     const updateFields: string[] = [];
     const values: any[] = [];
 
     Object.entries(settings).forEach(([key, value]) => {
-      if (value !== undefined && key !== 'user_id') {
+      if (value !== undefined && key !== "user_id") {
         updateFields.push(`${key} = ?`);
         values.push(value);
       }
@@ -185,13 +214,16 @@ export class UserModel {
 
     if (updateFields.length === 0) return;
 
-    updateFields.push('updated_at = CURRENT_TIMESTAMP');
+    updateFields.push("updated_at = CURRENT_TIMESTAMP");
     values.push(userId);
 
-    await db.run(`
+    await db.run(
+      `
       UPDATE user_settings 
-      SET ${updateFields.join(', ')} 
+      SET ${updateFields.join(", ")} 
       WHERE user_id = ?
-    `, values);
+    `,
+      values,
+    );
   }
 }
