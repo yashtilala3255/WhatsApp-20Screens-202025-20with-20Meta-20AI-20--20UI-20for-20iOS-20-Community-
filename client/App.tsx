@@ -18,6 +18,7 @@ function App() {
             <Route path="/calls" element={<Calls />} />
             <Route path="/communities" element={<Communities />} />
             <Route path="/chat/:id" element={<Chat />} />
+            <Route path="/meta-ai" element={<MetaAI />} />
             <Route path="/status/:id" element={<StatusDetail />} />
             <Route path="/status/:id/react" element={<StatusReaction />} />
             <Route path="*" element={<NotFound />} />
