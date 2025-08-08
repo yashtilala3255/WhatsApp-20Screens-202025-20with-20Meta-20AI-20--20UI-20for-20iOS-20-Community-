@@ -10,6 +10,14 @@ import StatusDetail from "./pages/StatusDetail";
 import StatusReaction from "./pages/StatusReaction";
 import Register from "./pages/Register";
 import Login from "./pages/Login";
+import Chats from "./pages/Chats";
+import NewChat from "./pages/NewChat";
+import Profile from "./pages/Profile";
+import Contacts from "./pages/Contacts";
+import Search from "./pages/Search";
+import NewGroup from "./pages/NewGroup";
+import GroupInfo from "./pages/GroupInfo";
+import Archive from "./pages/Archive";
 import NotFound from "./pages/NotFound";
 
 function App() {
