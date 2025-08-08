@@ -1,5 +1,5 @@
 import React from 'react';
-import { StatusBar } from '../components/StatusBar';
+import StatusBar from '../components/StatusBar';
 import { TabBar } from '../components/TabBar';
 
 const SettingsRow: React.FC<{

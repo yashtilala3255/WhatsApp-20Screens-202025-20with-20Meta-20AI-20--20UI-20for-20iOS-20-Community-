@@ -1,5 +1,5 @@
 import React from 'react';
-import { StatusBar } from '../components/StatusBar';
+import StatusBar from '../components/StatusBar';
 
 const ToggleSwitch: React.FC<{ active?: boolean; onChange?: () => void }> = ({ 
   active = false, 

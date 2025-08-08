@@ -1,5 +1,5 @@
 import React from 'react';
-import { StatusBar } from '../components/StatusBar';
+import StatusBar from '../components/StatusBar';
 
 export default function MetaAI() {
   return (
