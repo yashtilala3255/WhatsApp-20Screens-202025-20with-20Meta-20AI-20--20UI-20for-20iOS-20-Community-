@@ -70,7 +70,7 @@ export function TabBar() {
         </Link>
 
         {/* Chats Tab with Badge */}
-        <div className="flex flex-col items-center w-8 relative">
+        <Link to="/chats" className="flex flex-col items-center w-8 relative">
           <div className="w-8 h-8 flex items-center justify-center">
             <svg width="32" height="23" viewBox="0 0 33 23" fill="none">
               <path
@@ -90,7 +90,7 @@ export function TabBar() {
               1
             </span>
           </div>
-        </div>
+        </Link>
 
         {/* Settings Tab */}
         <Link to="/settings" className="flex flex-col items-center w-8">
