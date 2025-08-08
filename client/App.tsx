@@ -31,8 +31,9 @@ import NotFound from "./pages/NotFound";
 function App() {
   return (
     <BrowserRouter>
-      <div className="App min-h-screen bg-gray-100 flex items-center justify-center">
-        <div className="mobile-container">
+      <div className="App min-h-screen bg-gray-100">
+        {/* Mobile: Full screen layout */}
+        <div className="mobile-container lg:desktop-container">
           <Routes>
             <Route path="/" element={<Updates />} />
             <Route path="/calls" element={<Calls />} />
@@ -68,6 +69,14 @@ function App() {
             <Route path="/status/:id/react" element={<StatusReaction />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
+        </div>
+
+        {/* Desktop: Show app info */}
+        <div className="hidden lg:block fixed top-4 left-4 z-50">
+          <div className="bg-white/90 backdrop-blur-sm rounded-lg p-3 shadow-lg">
+            <h1 className="text-sm font-semibold text-gray-900">WhatsApp Clone</h1>
+            <p className="text-xs text-gray-600">Built with React & TypeScript</p>
+          </div>
         </div>
       </div>
       <Toaster />
