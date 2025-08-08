@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Updates from "./pages/Updates";
+import Calls from "./pages/Calls";
 import StatusDetail from "./pages/StatusDetail";
 import StatusReaction from "./pages/StatusReaction";
 import NotFound from "./pages/NotFound";
@@ -11,6 +12,7 @@ function App() {
         <div className="mobile-container">
           <Routes>
             <Route path="/" element={<Updates />} />
+            <Route path="/calls" element={<Calls />} />
             <Route path="/status/:id" element={<StatusDetail />} />
             <Route path="/status/:id/react" element={<StatusReaction />} />
             <Route path="*" element={<NotFound />} />
