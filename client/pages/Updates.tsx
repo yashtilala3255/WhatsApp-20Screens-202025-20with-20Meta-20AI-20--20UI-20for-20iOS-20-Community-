@@ -224,6 +224,22 @@ export default function Updates() {
       </div>
 
       <TabBar activeTab="updates" />
+
+      {/* Floating Registration Button */}
+      <Link
+        to="/register"
+        className="fixed bottom-20 right-6 w-14 h-14 bg-[#1DAB61] hover:bg-[#169954] active:bg-[#138a4a] text-white rounded-full shadow-lg flex items-center justify-center transition-all duration-200 transform hover:scale-105 z-10"
+      >
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+          <path
+            d="M12 5V19M5 12H19"
+            stroke="white"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+        </svg>
+      </Link>
     </div>
   );
 }
